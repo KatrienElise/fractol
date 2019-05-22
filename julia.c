@@ -14,7 +14,6 @@
 
 void    ft_julia_base(t_fractol *fract)
 {
-    ft_putendl("in de julia functie");
     fract->color = PINK;
     fract->it_max = 50;
     /*fract->x1 = -2.0
