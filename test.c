@@ -15,7 +15,7 @@ void	put_pixel_to_img(t_fractol *fract, int x, int y, int color)
 {
 	//while (x < WINW && y < WINH)
    // {
-		ft_memcpy(&fract->data_addr[(4 * y * WINW) + (4 * x)], &color, 4);
+      ft_memcpy(&fract->data_addr[(4 * y * fract->winw) + (4 * x)], &color, 4);
       //  x++;
       //  y++;
   // }

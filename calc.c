@@ -14,23 +14,38 @@
 
 void    square(t_fractol *fract)
 {
-     fract->temp = (fract->a * fract->a) - (fract->b * fract->b);
+    /* fract->temp = (fract->a * fract->a) - (fract->b * fract->b);
      fract->b = 2.0 * fract->a * fract->b;
      fract->a = fract->temp;
+     */
+     fract->tmp = fract->z_r;
+     fract->z_r = fract->z_r * fract->z_r -
+		fract->z_i * fract->z_i + fract->c_r;
+	fract->z_i = 2 * fract->z_i * fract->tmp + fract->c_i;
 }
 
 void  magnitude(t_fractol *fract)
 {
-    double  a;
-    double  b;
-    
-    a = fract->a * fract->a;
-    b = fract->b * fract->b;
-    fract->magni = ft_sqrt(a * b);
+    fract->magni = fract->z_r * fract->z_r + 
+     fract->z_i * fract->z_i;
 }
 
-void    add(t_fractol *fract)
+void      add(t_fractol *fract)
 {
      fract->a = fract->a + fract->ca;
      fract->b = fract->b + fract->cb;
+}
+
+void      calc_winw_winh(int ac, char **str, t_fractol *fract)
+{
+     if (ac == 4)
+    {
+        fract->winw = ft_atoi(str[2]);
+        fract->winh = ft_atoi(str[3]);
+    }
+    else
+    {
+        fract->winw = 800;
+        fract->winh = 800;
+    }
 }

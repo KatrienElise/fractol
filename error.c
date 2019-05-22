@@ -16,8 +16,8 @@
 void    exit_program(t_fractol *fract)
 {
     fract = NULL;
-        //mlx_destroy_window(fract->mlx, fract->win);
-        //mlx_destroy_image(fract->mlx, fract->img);
+    //mlx_destroy_window(fract->mlx, fract->win);
+      //  mlx_destroy_image(fract->mlx, fract->img);
 		exit(0);
 }
 

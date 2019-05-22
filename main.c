@@ -14,9 +14,9 @@
 
 int     main(int ac, char **av)
 {
-    if (ac == 2)
-      entry(av);
+    if (ac == 2 || ac == 4)
+      entry(av, ac);
     else
-      ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\", \"unknown\"\n");
+      ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\", \"unknown\"\n, option: winwith winheight");
     return (0); 
 }

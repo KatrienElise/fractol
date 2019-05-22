@@ -30,7 +30,7 @@ void    ft_calc_julia(t_fractol *fract)
 
     x = 400;
     y = 1;
-    while (x < WINW && y < WINH) // een if statement en fract->if < fract->it_max
+    while (x < fract->winw && y < fract->winh) // een if statement en fract->if < fract->it_max
     {
         if (fract->it < fract->it_max)
             fract->color = fract->color * fract->it;

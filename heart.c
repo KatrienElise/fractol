@@ -15,8 +15,8 @@
 void     ft_win_mlx_img(t_fractol *fract)
 {
     fract->mlx = mlx_init();
-	fract->win = mlx_new_window(fract->mlx, WINW, WINH, "FRACTOL");
-	fract->img = mlx_new_image(fract->mlx, WINW, WINH);
+    fract->win = mlx_new_window(fract->mlx, fract->winw, fract->winh, "FRACTOL");
+	fract->img = mlx_new_image(fract->mlx, fract->winw, fract->winh);
 	fract->data_addr = mlx_get_data_addr(fract->img,\
 	&fract->bpp, &fract->sl, &fract->endian);
 }
@@ -50,35 +50,35 @@ void    ft_base_func(t_fractol *fract)
 
 }
 
-int    ft_fract_compare(char *str, t_fractol *fract)
+int    ft_fract_compare(char **str, int ac, t_fractol *fract)
 {
-    if (ft_strcmp(str, "julia") == 0)
+    if (ft_strcmp(str[1], "julia") == 0)
         fract->name = 1;
-    else if (ft_strcmp(str, "mandelbrot") == 0)
+    else if (ft_strcmp(str[1], "mandelbrot") == 0)
         fract->name = 2; 
-    else if (ft_strcmp(str, "unknown") == 0)
+    else if (ft_strcmp(str[1], "unknown") == 0)
         fract->name = 3;
     else
     {
         ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\", \"unknown\"\n");
         return (0);
     }
+    calc_winw_winh(ac, str, fract);
     return (1);
 }
 
-int     entry(char **av)
+int     entry(char **av, int ac)
 {
     t_fractol   *fract;
 
     fract = (t_fractol *) malloc(sizeof(t_fractol));
     if (!fract)
         error_no_struct(1);
-    if (ft_fract_compare(av[1], fract) == 0)
+    if (ft_fract_compare(av, ac, fract) == 0)
         error(fract, 1);
     ft_win_mlx_img(fract);
     ft_base_func(fract); // port to functions of specific fracts, set first values.
     mlx_hook(fract->win, 2, 1L << 0, event_key, fract);
-    ft_putendl("back from press");
 	mlx_hook(fract->win, 4, 1L << 2, event_mouse, fract);
     // mlx_clear_window(fract->mlx, fract->win); nodig?
     mlx_loop(fract->mlx);

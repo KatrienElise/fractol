@@ -22,9 +22,6 @@
 # include "keycodes.h"
 # include <fcntl.h>
 
-# define WINW 800
-# define WINH 800
-
 typedef struct      s_fractol
 {
     void            *mlx;
@@ -41,6 +38,9 @@ typedef struct      s_fractol
     int             color;
     int             x;
     int             y;
+    int             infi;
+    int             winw;
+    int             winh;
 
     double          a;
     double          b;
@@ -71,10 +71,10 @@ typedef struct      s_fractol
 /*          heart.c                                                           */
 /* ************************************************************************** */
 void    ft_win_mlx_img(t_fractol *fract);
-int     ft_fractol_compare(char *str, t_fractol *fract);
+int     ft_fractol_compare(char *str, int ac, t_fractol *fract);
 void    ft_base_func(t_fractol *fract);
 void    ft_fract_set(t_fractol *fract);
-int     entry(char **av);
+int     entry(char **av, int ac);
 
 /* ************************************************************************** */
 /*          calc.c                                                           */
@@ -82,6 +82,7 @@ int     entry(char **av);
 void    square(t_fractol *fract);
 void    magnitude(t_fractol *fract);
 void    add(t_fractol *fract);
+void     calc_winw_winh(int ac, char **av, t_fractol *fract);
 
 /* ************************************************************************** */
 /*          calc.c                                                           */
