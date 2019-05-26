@@ -52,6 +52,7 @@ void    ft_base_func(t_fractol *fract)
 
 int    ft_fract_compare(char **str, int ac, t_fractol *fract)
 {
+    //test_print_values(fract);
     if (ft_strcmp(str[1], "julia") == 0)
         fract->name = 1;
     else if (ft_strcmp(str[1], "mandelbrot") == 0)
@@ -76,6 +77,7 @@ int     entry(char **av, int ac)
         error_no_struct(1);
     if (ft_fract_compare(av, ac, fract) == 0)
         error(fract, 1);
+    ft_calc_zero(fract);
     ft_win_mlx_img(fract);
     ft_base_func(fract); // port to functions of specific fracts, set first values.
     mlx_hook(fract->win, 2, 1L << 0, event_key, fract);

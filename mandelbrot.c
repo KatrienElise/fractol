@@ -20,7 +20,8 @@ void    ft_mandelbrot_base(t_fractol *fract)
 	fract->y1 = 0; //
     fract->y = 0;
 	fract->infi = 4;
-	fract->color = BLUE;
+	ft_get_color(fract);
+	//fract->color = BLUE;
 }
 
 void    ft_calc_mandel(t_fractol *fract)
@@ -51,6 +52,8 @@ void    mandelbrot(t_fractol *fract)
 {
     fract->x = 0;
 	fract->temp = fract->x;
+	printf("winw: %d, winh: %d\n", fract->winw, fract->winh);
+	test_print_values(fract);
 	while (fract->y < fract->winh)
 	{
 		fract->x = fract->tmp;

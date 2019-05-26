@@ -36,6 +36,20 @@ void      add(t_fractol *fract)
      fract->b = fract->b + fract->cb;
 }
 
+void      ft_calc_zero(t_fractol *fract)
+{
+    fract->nb = 0;
+    fract->it_max = 0;
+	fract->zoom = 0; // the bigger the number the bigger the fract
+	fract->x1 = 0; // these numbers decide where in the window the fract comes
+	fract->y1 = 0; //
+    fract->y = 0;
+    fract->c_r = 0;
+	fract->z_i = 0;
+	fract->z_r = 0;
+	fract->c_i = 0;
+	fract->infi = 0;
+}
 void      calc_winw_winh(int ac, char **str, t_fractol *fract)
 {
      if (ac == 4)
