@@ -36,6 +36,7 @@ typedef struct      s_fractol
     int             it_max;
     int             no_event;
     int             color;
+    int             color_nb;
     int             x;
     int             y;
     int             infi;
@@ -77,11 +78,17 @@ void    ft_fract_set(t_fractol *fract);
 int     entry(char **av, int ac);
 
 /* ************************************************************************** */
+/*          color.c                                                           */
+/* ************************************************************************** */
+void    ft_get_color(t_fractol *fract);
+
+/* ************************************************************************** */
 /*          calc.c                                                           */
 /* ************************************************************************** */
 void    square(t_fractol *fract);
 void    magnitude(t_fractol *fract);
 void    add(t_fractol *fract);
+void      ft_calc_zero(t_fractol *fract);
 void     calc_winw_winh(int ac, char **av, t_fractol *fract);
 
 /* ************************************************************************** */
@@ -96,6 +103,8 @@ void    unknown(t_fractol *fract);
 /* ************************************************************************** */
 int     event_key(int keycode, t_fractol *fract);
 int     event_key_change(int keycode, t_fractol *fract);
+void    ft_in_zoom(int x, int y, t_fractol *fract);
+void    ft_out_zoom(int x, int y, t_fractol *fract);
 int     event_mouse(int mousecode, int x, int y, t_fractol *fract);
 
 /* ************************************************************************** */
@@ -115,6 +124,7 @@ void    mandelbrot(t_fractol *fract);
 /*          test.c                                                            */
 /* ************************************************************************** */
 void	put_pixel_to_img(t_fractol *fract, int x, int y, int color);
+void    test_print_values(t_fractol *fract);
 
 /* ************************************************************************** */
 /*          error.c                                                           */

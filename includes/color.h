@@ -21,5 +21,10 @@
 # define BLACK 0x000000
 # define WHITE 0xffffff
 # define ORANGE 0xEF8633
+# define GOLD 0xFFD700
+# define SPRINGGREEN 0x00FF7F
+# define LIME 0x00FF00
+# define DARK_GREEN 0x006400
+# define LIGHT_GREEN 0x90EE90
 
 #endif
