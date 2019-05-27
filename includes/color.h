@@ -13,7 +13,7 @@
 # define COLOR_H
 
 # define BLUE 265
-# define RED 0xEA121F
+# define RED 0xFF0000
 # define YELLOW 0xF9F909
 # define PINK 0x9A1F6A
 # define LIGHT_BLUE 0x18E4E1

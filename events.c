@@ -56,10 +56,12 @@ void    ft_in_zoom(int x, int y , t_fractol *fract)
 	fract->zoom *= 1.3;
 	fract->it_max++;
     
+    /*
     fract->y1 += (y - fract->winh / 2) * 0.05 / fract->zoom;
 	fract->x1 += (x - fract->winw / 2) * 0.05 / fract->zoom;
 	fract->zoom /= 1.1;
-    mandelbrot(fract);
+    */
+    //mandelbrot(fract);
     printf("ZOOM: it_max is: %d, fract->x1: %f, fract->zoom: %f\n", fract->it_max, fract->x1, fract->zoom);
 }
 
@@ -76,7 +78,9 @@ int    event_mouse(int mousecode, int x, int y, t_fractol *fract)
     // in unknown word de gele lijn geheel overgetekent door de fractol.
     //toevoegen van mouse event, die de waardes verandert van x1, y1, zoomn en it_max
     //dan kan die alleen niet daarna weer eerst naar de base gaan.
-    if (mousecode == 1 || mousecode == 5)
+    if (mousecode == 1 && fract->name == 1)
+        mouse_julia(x, y, fract);
+    else if (mousecode == 1 || mousecode == 5)
     {
         ft_putendl("pressed left mouse button");
         ft_in_zoom(x, y, fract);
@@ -97,6 +101,6 @@ int    event_mouse(int mousecode, int x, int y, t_fractol *fract)
         }
     }
     */
-    ft_base_func(fract);
+    ft_fract_set(fract);
     return (0);
 }

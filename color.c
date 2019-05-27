@@ -18,12 +18,12 @@ void    ft_get_color(t_fractol *fract)
     if (fract->color_nb == 0)
     {
         fract->color = BLUE;
-        //fract->color_max = BLACK;
+       // fract->color_stable = BLACK;
     }
     if (fract->color_nb == 1)
     {
-        fract->color = DARK_GREEN;
-        //fract->color_max = LIGHT_GREEN;    
+        fract->color = RED;
+       // fract->color_stable = LIGHT_GREEN;    
     }
     
 }

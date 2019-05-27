@@ -24,7 +24,7 @@ void     ft_win_mlx_img(t_fractol *fract)
 void    ft_fract_set(t_fractol *fract)
 {
     if (fract->name == 1)
-        ft_calc_julia(fract);
+        julia(fract);
     if (fract->name == 2)
         mandelbrot(fract);
     else if (fract->name == 3)
@@ -77,7 +77,7 @@ int     entry(char **av, int ac)
         error_no_struct(1);
     if (ft_fract_compare(av, ac, fract) == 0)
         error(fract, 1);
-    ft_calc_zero(fract);
+   // ft_calc_zero(fract);
     ft_win_mlx_img(fract);
     ft_base_func(fract); // port to functions of specific fracts, set first values.
     mlx_hook(fract->win, 2, 1L << 0, event_key, fract);

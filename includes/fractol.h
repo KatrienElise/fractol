@@ -37,34 +37,25 @@ typedef struct      s_fractol
     int             no_event;
     int             color;
     int             color_nb;
+   // int             color_stable;
     int             x;
     int             y;
     int             infi;
     int             winw;
     int             winh;
-
-    double          a;
-    double          b;
+    int             j_mouse;
+    double          tmp;
     double          temp;
     double          magni;
-    double          y_max;
-    double          z;
-    double          c;
-    double          ca;
-    double          cb;
 
     double	    	zoom;
+    double          nb;
 	double	    	x1;
 	double	    	y1;
-    double          x_m;
-    double          y_m;
-    double          stop;
-    double          nb;
 	double	    	c_r;
 	double	    	c_i;
 	double	    	z_r;
 	double	    	z_i;
-	double	    	tmp;
 
 }                   t_fractol;
 
@@ -92,7 +83,7 @@ void      ft_calc_zero(t_fractol *fract);
 void     calc_winw_winh(int ac, char **av, t_fractol *fract);
 
 /* ************************************************************************** */
-/*          calc.c                                                           */
+/*          unknown.c                                                           */
 /* ************************************************************************** */
 void    ft_unknown_base(t_fractol *fract);
 void    ft_calc_unknown(t_fractol *fract);
@@ -110,8 +101,10 @@ int     event_mouse(int mousecode, int x, int y, t_fractol *fract);
 /* ************************************************************************** */
 /*          julia.c                                                          */
 /* ************************************************************************** */
+int     mouse_julia(int x, int y, t_fractol *fract);
 void    ft_julia_base(t_fractol *fract);
 void    ft_calc_julia(t_fractol *fract);
+void    julia(t_fractol *fract);
 
 /* ************************************************************************** */
 /*          mandelbrot.c                                                      */

@@ -52,8 +52,8 @@ void    mandelbrot(t_fractol *fract)
 {
     fract->x = 0;
 	fract->temp = fract->x;
-	printf("winw: %d, winh: %d\n", fract->winw, fract->winh);
-	test_print_values(fract);
+	//printf("winw: %d, winh: %d\n", fract->winw, fract->winh);
+	//test_print_values(fract);
 	while (fract->y < fract->winh)
 	{
 		fract->x = fract->tmp;

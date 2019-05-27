@@ -19,21 +19,26 @@ void    square(t_fractol *fract)
      fract->a = fract->temp;
      */
      fract->tmp = fract->z_r;
-     fract->z_r = fract->z_r * fract->z_r -
-		fract->z_i * fract->z_i + fract->c_r;
-	fract->z_i = 2 * fract->z_i * fract->tmp + fract->c_i;
+     if (fract->name == 2)
+     {
+          fract->z_r = fract->z_r * fract->z_r - \
+		     fract->z_i * fract->z_i + fract->c_r;
+	     fract->z_i = 2 * fract->z_i * fract->tmp + fract->c_i;
+     }
+     
+     else if (fract->name == 1)
+     {
+          fract->z_r = fract->z_r * fract->z_r - \
+		     fract->z_i * fract->z_i - 0.9 + (fract->c_r / fract->winw);
+	     fract->z_i = 2 * fract->z_i * fract->tmp + (fract->c_i / fract->winh);
+     }
+     
 }
 
 void  magnitude(t_fractol *fract)
 {
     fract->magni = fract->z_r * fract->z_r + 
      fract->z_i * fract->z_i;
-}
-
-void      add(t_fractol *fract)
-{
-     fract->a = fract->a + fract->ca;
-     fract->b = fract->b + fract->cb;
 }
 
 void      ft_calc_zero(t_fractol *fract)
