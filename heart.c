@@ -23,6 +23,7 @@ void     ft_win_mlx_img(t_fractol *fract)
 
 void    ft_fract_set(t_fractol *fract)
 {
+    ft_putstr("fract_set\n");
     if (fract->name == 1)
         julia(fract);
     if (fract->name == 2)
@@ -33,7 +34,7 @@ void    ft_fract_set(t_fractol *fract)
     ft_put_text(fract);
     //ft_reset(fract);
 }
-void    ft_base_func(t_fractol *fract)
+void    ft_fract_base(t_fractol *fract)
 {
     if (fract->name == 1)
         ft_julia_base(fract);        //sets struct values
@@ -79,7 +80,7 @@ int     entry(char **av, int ac)
         error(fract, 1);
    // ft_calc_zero(fract);
     ft_win_mlx_img(fract);
-    ft_base_func(fract); // port to functions of specific fracts, set first values.
+    ft_fract_base(fract); // port to functions of specific fracts, set first values.
     mlx_hook(fract->win, 2, 1L << 0, event_key, fract);
 	mlx_hook(fract->win, 4, 1L << 2, event_mouse, fract);
     // mlx_clear_window(fract->mlx, fract->win); nodig?

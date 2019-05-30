@@ -64,7 +64,7 @@ typedef struct      s_fractol
 /* ************************************************************************** */
 void    ft_win_mlx_img(t_fractol *fract);
 int     ft_fractol_compare(char *str, int ac, t_fractol *fract);
-void    ft_base_func(t_fractol *fract);
+void    ft_fract_base(t_fractol *fract);
 void    ft_fract_set(t_fractol *fract);
 int     entry(char **av, int ac);
 

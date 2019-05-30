@@ -20,7 +20,7 @@ int     event_key_change(int keycode, t_fractol *fract)
      else if (keycode == KEY_U)
         fract->name = 3;
     ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4);
-    ft_base_func(fract);
+    ft_fract_base(fract);
     return (0);
 }
 
@@ -44,7 +44,7 @@ int    event_key(int keycode, t_fractol *fract)
     else
         fract->no_event = 1;
     if (fract->no_event != 1)
-        ft_base_func(fract);
+        ft_fract_base(fract);
     return (0);
 }
 
@@ -79,7 +79,12 @@ int    event_mouse(int mousecode, int x, int y, t_fractol *fract)
     //toevoegen van mouse event, die de waardes verandert van x1, y1, zoomn en it_max
     //dan kan die alleen niet daarna weer eerst naar de base gaan.
     if (mousecode == 1 && fract->name == 1)
+    {
+       // ft_putstr("AA\n");
+      //  printf("loc x: %d, loc y: %d\n", x, y);
+        fract->j_mouse = 1;
         mouse_julia(x, y, fract);
+    }
     else if (mousecode == 1 || mousecode == 5)
     {
         ft_putendl("pressed left mouse button");
@@ -101,6 +106,6 @@ int    event_mouse(int mousecode, int x, int y, t_fractol *fract)
         }
     }
     */
-    ft_fract_set(fract);
+    ft_fract_base(fract);
     return (0);
 }

@@ -53,6 +53,7 @@ void      ft_calc_zero(t_fractol *fract)
 	fract->z_i = 0;
 	fract->z_r = 0;
 	fract->c_i = 0;
+     fract->j_mouse = 0;
 	fract->infi = 0;
 }
 void      calc_winw_winh(int ac, char **str, t_fractol *fract)
