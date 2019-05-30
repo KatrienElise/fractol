@@ -17,7 +17,7 @@ Get a bit more wise in the whole rgb spectrum.
 
 TAKE TROUGH:
 -after creating the struct set everything to zero? (done) is there a function which does this in libft? 
--is the temp nodig voor als je later terug komt, x is dan verandert in de lengte x breedte en niet gereset? 
-dus x gaat naar 0 ?
 -Gaat de zoom niet goed omdat x en y in x en y 1 worden gezet? 
 -the location of the loop and hook functions
+-na lang inzoomen word die langzaam.
+-image freeze
