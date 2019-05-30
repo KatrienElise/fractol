@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*  main.c                                              :+:    :+:            */
+/*   keycodes.h                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/01 17:52:00 by kblum         ########   odam.nl         */
+/*   Updated: 2019/05/30 15:42:36 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef KEYCODE_H
 # define KEYCODE_H
 
@@ -58,6 +59,9 @@
 # define KEY_X 7
 # define KEY_Y 16
 # define KEY_Z 6
+
+# define KEY_PLUS 24
+# define KEY_MIN 27
 
 #endif
 

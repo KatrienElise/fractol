@@ -22,42 +22,54 @@
 # include "keycodes.h"
 # include <fcntl.h>
 
+
+typedef struct      s_color
+{
+    int             nb;
+    int             nb2;
+    int             base;
+    int             c;
+    int             x;
+    int             stable;
+}                   t_color;
+
 typedef struct      s_fractol
 {
     void            *mlx;
     void            **win;
     void            *img;
     char            *data_addr;
-    int             name;
     int             endian;
     int             bpp;
     int             sl;
+    
+    int             name;
+    int             winw;
+    int             winh;
     int             it;
     int             it_max;
     int             no_event;
-    int             color;
-    int             color_nb;
-   // int             color_stable;
     int             x;
     int             y;
     int             infi;
-    int             winw;
-    int             winh;
     int             j_mouse;
-    double          tmp;
-    double          temp;
-    double          magni;
+    int             shift;
 
+    double          magni;
     double	    	zoom;
-    double          nb;
 	double	    	x1;
 	double	    	y1;
 	double	    	c_r;
 	double	    	c_i;
 	double	    	z_r;
 	double	    	z_i;
+    double          tmp;
+    double          change_jul;
+    
+    t_color         color;
 
 }                   t_fractol;
+
 
 /* ************************************************************************** */
 /*          heart.c                                                           */
@@ -72,6 +84,7 @@ int     entry(char **av, int ac);
 /*          color.c                                                           */
 /* ************************************************************************** */
 void    ft_get_color(t_fractol *fract);
+void    color_stable(t_fractol *fract);
 
 /* ************************************************************************** */
 /*          calc.c                                                           */
