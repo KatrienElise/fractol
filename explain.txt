@@ -1,18 +1,73 @@
-Keycodes give fract->colornb a code, nb 1, 2, ,3, 4 etc
-Each code is connected to a specific function 
-In the main code, is a function port, which checks for each number and sends Loui to 
-the code.
-so if fract->colornb == 1, go to ft_color_1(fract);
+MAIN.C :
+Loui enters in main. This is where main checks if he has the right bagage with him. The rules of the game are easy.
+Eather he has two, or he has 4 peaces. If not,l he will be send home. If he has, main sends him to entry. 
 
-in this function the RGB values will be set according to the fract->it. 
+ENTRY, (heart.c):
+When entry hears someone is coming, it straight away makes his travelbag (the struct). If he is not able to, he 
+will stop Loui his journey straight away.  
 
-Another thing:
+ft_CALC_ZERO (calc.c)
+here all the values in the struct will be put to zero zo there is no garbage value. No he sends loui to fract_compare.
 
-before you put the location and color in memory to send the color with the 
-fract->mlx to the function, mlx_get_color_value.. the return of this function will
-be the color to sent to the memcpy.
+Fract_compare (heart.c) :
+Now fract_compare will check Loui his first bag. In here he contains the name of the journey he would like to take. 
+There are only a few options, if entry does not reconize one of these name he 
+will sent Loui back and tell him what he can choose from, and destroy the struct he made in Error_no_struct. If it is good, 
+he sets numbers to fract->name which stands for the names. Then fract_compare sends him to calc_winw_winh.
 
-Get a bit more wise in the whole rgb spectrum.
+calc_winw_winh (calc.c);
+Sees if Loui has 2 other bags. These can contains the length and with. If Loui does not have another back, fract_compare gives him a standart
+winw and winh. Otherwise he checkes for valid numbers. If the number is not valid, he goes to exti and destroys the struct. 
+Otherwise he puts this all in the struct. Back to fract_compare, back to entry. 
+
+ft_win_mlx_img (heart.c):
+here the pointers to the window images and addresse will be created. back to entry.
+
+entry (heart.c );
+Yes Loui has all the right tools to start his journey, first thing is to go to the fract_base!
+
+fft_fract_base: (heart.c)
+here there is only looked at his number (which road to travel), and he will be send to the sepcific road to fill up his struct
+with some base values. 
+
+ft_julia/mandel/unkknown _base (name of road):
+putts some struct values from 0 to a specific value for this travel. Sends Loui to a different function to get his colors. 
+
+ft_get_color(colors. c)
+looks at his colors and decide what his base color will be(the color that is inbetween stable and not stable) sends him back to 
+base function.
+
+ft_julia/mandel/unkknown _base (name of road):
+He is all filled up and sends him to fract_set.
+
+ft_fract_set (heart):
+looks at his name and sends him to the big calculating function. If he comes back from this well, fract set will put all the stuff 
+that has been put in memory to the window on the screen, and als add maybe some text. 
+
+julia/mandelbrot (name of road):
+Here we will go to every pixel of the screen, so iterate with fract->x and fract->y, for each pixel loui goes to the 
+calc_name function.
+
+ft_calc(julia/mandelbrot) (name of road):
+For every positon of the pixel on the screen is calcualited with a specific functions of the point is stable or unstable. 
+Goes to infinity, blows up. It will test the for a X amount of times. If it reaches the X, lets say 50, it will be considerd
+stable and be colored BLACK. If it reaches a unstable state before it will stop doing this function and get a color, this 
+is the base color times the times it has been tested. When a numbers blows up is decides by the infi number. 
+infi: the higher this number, the more it's it can get so more color. the lower the less color.the lower more point will be black. 
+in here He gets sent to magnitude and square, the put_pixel_to_image put it into memory. the location and the color. If all 
+the pixels are set it goes back to fract_set
+
+ft_fract_Set(heart)
+all the pixel have a color in memory. it will now put this to the window and the text. 
+Here it stays in the loop and is the END unless, something happens! because in entry arae to loops, for mouse en key events, 
+and the loop itself. 
 
 
 
+
+
+
+
+
+
+\

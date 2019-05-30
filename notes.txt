@@ -1,0 +1,23 @@
+Keycodes give fract->colornb a code, nb 1, 2, ,3, 4 etc
+Each code is connected to a specific function 
+In the main code, is a function port, which checks for each number and sends Loui to 
+the code.
+so if fract->colornb == 1, go to ft_color_1(fract);
+
+in this function the RGB values will be set according to the fract->it. 
+
+Another thing:
+
+before you put the location and color in memory to send the color with the 
+fract->mlx to the function, mlx_get_color_value.. the return of this function will
+be the color to sent to the memcpy.
+
+Get a bit more wise in the whole rgb spectrum.
+
+
+TAKE TROUGH:
+-after creating the struct set everything to zero? (done) is there a function which does this in libft? 
+-is the temp nodig voor als je later terug komt, x is dan verandert in de lengte x breedte en niet gereset? 
+dus x gaat naar 0 ?
+-Gaat de zoom niet goed omdat x en y in x en y 1 worden gezet? 
+-the location of the loop and hook functions

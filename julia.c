@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/01 17:52:00 by kblum         ########   odam.nl         */
+/*   Updated: 2019/05/30 17:02:14 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ int		mouse_julia(int x, int y, t_fractol *fract)
 
 void    ft_julia_base(t_fractol *fract)
 {
-    fract->it_max = 70;
-	fract->zoom = 1.3; // the bigger the number the bigger the fract
+    fract->it_max = 30;
+	if (fract->zoom == 0)
+		fract->zoom = 1.3; // the bigger the number the bigger the fract
 	fract->x1 = 0; // these numbers decide where in the window the fract comes
 	fract->y1 = 0; //
     fract->y = 0;
@@ -71,18 +72,18 @@ void    ft_calc_julia(t_fractol *fract)
 	if (fract->it == fract->it_max)
 		put_pixel_to_img(fract, fract->x, fract->y, BLACK);
 	else
-		put_pixel_to_img(fract, fract->x, fract->y, (fract->color * fract->it));
+		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * fract->it));
 }
 
 void    julia(t_fractol *fract)
 {
-    fract->x = 0;
-	fract->temp = fract->x;
+
 	//printf("winw: %d, winh: %d\n", fract->winw, fract->winh);
 	//test_print_values(fract);
+	fract->x = 0; // is this oke because of the zoom functions??
 	while (fract->y < fract->winh)
 	{
-		fract->x = fract->tmp;
+		fract->x = 0;
 		while (fract->x < fract->winw)
 		{
 			ft_calc_julia(fract);

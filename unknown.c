@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   mandelbrot.c                                          :+:    :+:         */
+/*   unknown.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/01 17:52:00 by kblum         ########   odam.nl         */
+/*   Updated: 2019/05/30 13:52:02 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void    ft_unknown_base(t_fractol *fract)
 	fract->zoom = 1.3;
 	fract->x1 = -0.7;
 	fract->y1 = 0; 
-	fract->color = LIGHT_BLUE;
+	fract->color.base = LIGHT_BLUE;
     fract->y = 0;
 	fract->infi = 4; //hoe groter infi hoe meer detai. 
 }
@@ -42,14 +42,14 @@ void    ft_calc_unknown(t_fractol *fract)
 	if (fract->it == fract->it_max)
 		put_pixel_to_img(fract, fract->x, fract->y, BLACK);
 	else
-		put_pixel_to_img(fract, fract->x, fract->y, (fract->color * fract->it));
+		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * fract->it));
 }
 
 void    unknown(t_fractol *fract)
 {
     ft_putendl("unknwon:");
 	fract->x = 0;
-	fract->temp = fract->x;
+	fract->tmp = fract->x;
 	while (fract->y < fract->winh)
 	{
 		fract->x = fract->tmp;

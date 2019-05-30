@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*  heart.c                                              :+:    :+:           */
+/*   heart.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/01 17:52:00 by kblum         ########   odam.nl         */
+/*   Updated: 2019/05/30 16:37:16 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void     ft_win_mlx_img(t_fractol *fract)
 
 void    ft_fract_set(t_fractol *fract)
 {
-    ft_putstr("fract_set\n");
+    printf("fract_set dit is zoom: %f\n", fract->zoom);
     if (fract->name == 1)
         julia(fract);
     if (fract->name == 2)
@@ -76,9 +76,9 @@ int     entry(char **av, int ac)
     fract = (t_fractol *) malloc(sizeof(t_fractol));
     if (!fract)
         error_no_struct(1);
+    ft_calc_zero(fract);
     if (ft_fract_compare(av, ac, fract) == 0)
         error(fract, 1);
-   // ft_calc_zero(fract);
     ft_win_mlx_img(fract);
     ft_fract_base(fract); // port to functions of specific fracts, set first values.
     mlx_hook(fract->win, 2, 1L << 0, event_key, fract);

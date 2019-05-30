@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*  main.c                                              :+:    :+:            */
+/*   error.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/01 17:52:00 by kblum         ########   odam.nl         */
+/*   Updated: 2019/05/30 11:25:23 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ void    error(t_fractol *fract, int d)
     fract = NULL;
     if (d == 1)
         ft_putendl("No right fractol name");
+    else if (d == 2)
+    {
+        ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\", \"unknown\",");
+        ft_putstr(" option: winwith winheight\n");
+    }
     //mlx_destroy_window(fract->mlx, fract->win);
     //mlx_destroy_image(fract->mlx, fract->img);
 	exit(0);

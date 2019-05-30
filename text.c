@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   text.c                                          :+:    :+:               */
+/*   text.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/01 17:52:00 by kblum         ########   odam.nl         */
+/*   Updated: 2019/05/30 15:26:27 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void    ft_put_text(t_fractol *fract)
 {
-    mlx_string_put(fract->mlx, fract->win, 10, 10, RED, "katrien");
+    mlx_string_put(fract->mlx, fract->win, 10, 10, WHITE, "katrien");
     if (fract->name == 1)
-        mlx_string_put(fract->mlx, fract->win, 150, 10, RED, "julia");
+        mlx_string_put(fract->mlx, fract->win, 150, 10, WHITE, "julia");
     else if (fract->name == 2)
-        mlx_string_put(fract->mlx, fract->win, 150, 10, RED, "mandelbrot");
+        mlx_string_put(fract->mlx, fract->win, 150, 10, WHITE, "mandelbrot");
     else
-        mlx_string_put(fract->mlx, fract->win, 150, 10, RED, "unknown");
+        mlx_string_put(fract->mlx, fract->win, 150, 10, WHITE, "unknown");
 }
