@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rsteigen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/11 09:13:47 by rsteigen      #+#    #+#                 */
-/*   Updated: 2019/04/10 14:20:03 by rsteigen      ########   odam.nl         */
+/*   Created: 2019/01/11 09:13:47 by rsteigen       #+#    #+#                */
+/*   Updated: 2019/05/30 13:36:51 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char				*ft_strnstr(const char *haystack, const char *needle,\
 					size_t len);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
+int					ft_isdigit_string(char *str);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
