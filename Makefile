@@ -13,8 +13,8 @@
 
 NAME = fractol
 FLAGS = -Wall -Wextra -Werror
-FUNCS =	heart.c events.c julia.c mandelbrot.c test.c error.c text.c calc.c \
-unknown.c color.c
+FUNCS =	heart.c event_key.c event_mouse.c julia.c mandelbrot.c test.c error.c \
+text.c calc.c unknown.c color.c
 
 all: $(NAME)
 

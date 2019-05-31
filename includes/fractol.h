@@ -104,13 +104,19 @@ void    ft_calc_unknown(t_fractol *fract);
 void    unknown(t_fractol *fract);
 
 /* ************************************************************************** */
-/*          events.c                                                          */
+/*          event_key.c                                                       */
 /* ************************************************************************** */
 int     event_key(int keycode, t_fractol *fract);
-int     event_key_change(int keycode, t_fractol *fract);
-void    ft_in_zoom(int x, int y, t_fractol *fract);
+void    event_shifts(int keycode, t_fractol *fract);
+void    event_key_change(int keycode, t_fractol *fract);
+
+/* ************************************************************************** */
+/*          event_mouse.c                                                       */
+/* ************************************************************************** */
 void    ft_out_zoom(int x, int y, t_fractol *fract);
+void    ft_in_zoom(int x, int y, t_fractol *fract);
 int     event_mouse(int mousecode, int x, int y, t_fractol *fract);
+
 
 /* ************************************************************************** */
 /*          julia.c                                                          */

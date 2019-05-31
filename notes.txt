@@ -23,3 +23,6 @@ TAKE TROUGH:
 -image freeze
 -statc functions 
 -veradneren van it_max met keycodes
+
+-events werken niet bij julia
+-button to show which shift keys are on 
