@@ -6,38 +6,18 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/30 17:02:14 by kblum         ########   odam.nl         */
+/*   Updated: 2019/05/31 15:10:32 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		mouse_julia(int x, int y, t_fractol *fract)
-{
-    printf("loc x: %d, loc y: %d\n", x, y);
-    
-	if (fract->name == 1 && fract->j_mouse == 1)
-	{
-		fract->c_r = x * 1.5;
-		fract->c_i = y * 2 - 800;
-		ft_fract_set(fract);
-	}
-    
-   //if (frac->stop == 0)
-    //ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4);
-	//fract->c_r = (x - fract->winw / 2)
-	//		/ (2 * fract->zoom * fract->winw) + fract->x1;
-	//if (frac->stop == 0)
-	//fract->c_i = (y - fract->winh / 2)
-	//		/ (2 * fract->zoom * fract->winh) + fract->y1;
-	return (0);
-}
-
 void    ft_julia_base(t_fractol *fract)
 {
-    fract->it_max = 30;
+	if (!fract->it_max)
+    	fract->it_max = 30;
 	if (fract->zoom == 0)
-		fract->zoom = 1; // the bigger the number the bigger the fract
+		fract->zoom = 1.3; // the bigger the number the bigger the fract
 	fract->x1 = 0; // these numbers decide where in the window the fract comes
 	fract->y1 = 0; //
     fract->y = 0;
@@ -70,18 +50,15 @@ void    ft_calc_julia(t_fractol *fract)
 		magnitude(fract);
 	}
 	if (fract->it == fract->it_max)
-		put_pixel_to_img(fract, fract->x, fract->y, BLACK);
+		put_pixel_to_img(fract, fract->x, fract->y, fract->color.stable);
 	else
-		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * (fract->it / 2)));
+		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * (fract->it)));
 }
 
 void    julia(t_fractol *fract)
 {
-
-	//printf("winw: %d, winh: %d\n", fract->winw, fract->winh);
-	//test_print_values(fract);
 	//fract->x = 0; // is this oke because of the zoom functions??
-    fract->temp = fract->x;
+    fract->x = 0;
 	while (fract->y < fract->winh)
 	{
 		fract->x = fract->temp;

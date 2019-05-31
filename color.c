@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/30 16:24:28 by kblum         ########   odam.nl         */
+/*   Updated: 2019/05/31 14:33:56 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,10 @@
 
 void    ft_get_color(t_fractol *fract)
 {
-    //fract->color = *(t_color*) malloc(sizeof(t_color));
-    //if (!fract->color)
-   //     error_no_struct(1);
-
     if (fract->color.nb == 0)
         fract->color.base = BLUE;
     else if (fract->color.nb == 1)
-        fract->color.base = RED;    
+        fract->color.base = RED; 
     else if (fract->color.nb == 2)
         fract->color.base = GREEN;    
     else if (fract->color.nb == 3)
@@ -67,4 +63,8 @@ void    color_stable(t_fractol *fract)
         fract->color.stable = DARK_GREEN;    
     else if (fract->color.nb2 == 9)
         fract->color.stable = LIGHT_GREEN;
+    else if (fract->color.nb2 == 10)
+        fract->color.stable = PINK2;
+    else if (fract->color.nb2 == 11)
+        fract->color.stable = GREEN;
 }

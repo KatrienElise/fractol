@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/30 16:56:40 by kblum         ########   odam.nl         */
+/*   Updated: 2019/05/31 15:10:15 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void    ft_mandelbrot_base(t_fractol *fract)
 {
-    fract->it_max = 30;
+	if (!fract->it_max)
+    	fract->it_max = 30;
 	if (fract->zoom == 0)
 		fract->zoom = 1.3; // the bigger the number the bigger the fract
 	fract->x1 = -0.7; // these numbers decide where in the window the fract comes
@@ -45,15 +46,13 @@ void    ft_calc_mandel(t_fractol *fract)
 		magnitude(fract);
 	}
 	if (fract->it == fract->it_max)
-		put_pixel_to_img(fract, fract->x, fract->y, fract->color.stable);
+		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, fract->color.stable);
 	else
-		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * (fract->it)));
+		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, (fract->color.base * (fract->it)));
 }
 
 void    mandelbrot(t_fractol *fract)
 {
-	//printf("winw: %d, winh: %d\n", fract->winw, fract->winh);
-	//test_print_values(fract);
 	fract->x = 0;
 	while (fract->y < fract->winh)
 	{

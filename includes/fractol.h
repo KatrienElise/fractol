@@ -48,14 +48,16 @@ typedef struct      s_fractol
     int             winh;
     int             it;
     int             it_max;
-    int             no_event;
     int             x;
     int             temp;
     int             y;
     int             infi;
     int             j_mouse;
+    int             quit_mouse;
     int             shift;
-
+    int             move_hor;
+    int             move_vert;
+    
     double          magni;
     double	    	zoom;
 	double	    	x1;
@@ -106,16 +108,19 @@ void    unknown(t_fractol *fract);
 /* ************************************************************************** */
 /*          event_key.c                                                       */
 /* ************************************************************************** */
+int     event_key2(int keycode, t_fractol *fract);
 int     event_key(int keycode, t_fractol *fract);
-void    event_shifts(int keycode, t_fractol *fract);
-void    event_key_change(int keycode, t_fractol *fract);
+int     event_shifts(int keycode, t_fractol *fract);
+int     event_key_change(int keycode, t_fractol *fract);
 
 /* ************************************************************************** */
 /*          event_mouse.c                                                       */
 /* ************************************************************************** */
+int		mouse_julia(int x, int y, t_fractol *fract);
 void    ft_out_zoom(int x, int y, t_fractol *fract);
 void    ft_in_zoom(int x, int y, t_fractol *fract);
 int     event_mouse(int mousecode, int x, int y, t_fractol *fract);
+int     event_mouse_move(int x, int y, t_fractol *fract);
 
 
 /* ************************************************************************** */

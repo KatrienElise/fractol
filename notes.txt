@@ -16,13 +16,20 @@ Get a bit more wise in the whole rgb spectrum.
 
 
 TAKE TROUGH:
--after creating the struct set everything to zero? (done) is there a function which does this in libft? 
+-zoom maken
 -Gaat de zoom niet goed omdat x en y in x en y 1 worden gezet? 
--the location of the loop and hook functions
 -na lang inzoomen word die langzaam.
--image freeze
--statc functions 
--veradneren van it_max met keycodes
-
--events werken niet bij julia
+-static functions 
+-veradneren van it_max met keycodes kan die minder dan 0 worden?
 -button to show which shift keys are on 
+-index welke toets wat doet
+
+BONUS:
+-change stable colors
+-change unstable colors
+-change julia with keys
+-moving with arrow
+
+-extra fractols?
+-zoom in at mouse position?
+-two fractals in two windos?

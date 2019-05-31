@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/30 16:37:16 by kblum         ########   odam.nl         */
+/*   Updated: 2019/05/31 14:02:48 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void    ft_win_mlx_img(t_fractol *fract)
 
 void    ft_fract_set(t_fractol *fract)
 {
-    printf("fract_set dit is zoom: %f\n", fract->zoom);
     if (fract->name == 1)
         julia(fract);
     if (fract->name == 2)
@@ -47,7 +46,6 @@ void    ft_fract_base(t_fractol *fract)
 
 int    ft_fract_compare(char **str, int ac, t_fractol *fract)
 {
-    //test_print_values(fract);
     if (ft_strcmp(str[1], "julia") == 0)
         fract->name = 1;
     else if (ft_strcmp(str[1], "mandelbrot") == 0)
@@ -70,13 +68,15 @@ int     entry(char **av, int ac)
     fract = (t_fractol *) malloc(sizeof(t_fractol));
     if (!fract)
         error_no_struct(1);
-    ft_calc_zero(fract);
+    ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4); // zet bzero alles naar nul wat er in de struct staat?
+    //ft_calc_zero(fract);
     if (ft_fract_compare(av, ac, fract) == 0)
         error(fract, 1);
     ft_win_mlx_img(fract);
     ft_fract_base(fract);
     mlx_hook(fract->win, 2, 1L << 0, event_key, fract);
 	mlx_hook(fract->win, 4, 1L << 2, event_mouse, fract);
+	mlx_hook(fract->win, 6, 1L << 13, event_mouse_move, fract);
     // mlx_clear_window(fract->mlx, fract->win); nodig?
     mlx_loop(fract->mlx);
     return (0); 

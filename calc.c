@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/30 16:22:31 by kblum         ########   odam.nl         */
+/*   Updated: 2019/05/31 14:31:53 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@ void  magnitude(t_fractol *fract)
 
 void ft_calc_zero(t_fractol *fract)
 {
-     fract->name = 0;
+    // fract->name = 0;
      fract->it_max = 0;
      fract->it = 0;
      fract->color.nb = 0;
      fract->color.nb2 = 0;
-     fract->no_event = 0;
+     fract->quit_mouse = 0;
+     fract->move_hor = 0;
+     fract->move_vert = 0;
      fract->shift = 0;
      fract->color.c = 0;
      fract->color.x = 0;
