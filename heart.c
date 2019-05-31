@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void     ft_win_mlx_img(t_fractol *fract)
+void    ft_win_mlx_img(t_fractol *fract)
 {
     fract->mlx = mlx_init();
     fract->win = mlx_new_window(fract->mlx, fract->winw, fract->winh, "FRACTOL");
@@ -37,18 +37,12 @@ void    ft_fract_set(t_fractol *fract)
 void    ft_fract_base(t_fractol *fract)
 {
     if (fract->name == 1)
-        ft_julia_base(fract);        //sets struct values
+        ft_julia_base(fract);
     else if (fract->name == 2)
-        ft_mandelbrot_base(fract);   //sets struct values
+        ft_mandelbrot_base(fract);
     else if (fract->name == 3)
         ft_unknown_base(fract);
-    ft_fract_set(fract); //tekent de fractol to img?, is a port to specific fract function 
-    //that will calculate wiht the set values and set pix to mem, and put img to wind.
-    /* in de julie/mandel functies word data geset, en dan in 
-    de laatste functie de fract_set word met deze data de fractol
-    berekent?
-    */
-
+    ft_fract_set(fract); 
 }
 
 int    ft_fract_compare(char **str, int ac, t_fractol *fract)
@@ -80,7 +74,7 @@ int     entry(char **av, int ac)
     if (ft_fract_compare(av, ac, fract) == 0)
         error(fract, 1);
     ft_win_mlx_img(fract);
-    ft_fract_base(fract); // port to functions of specific fracts, set first values.
+    ft_fract_base(fract);
     mlx_hook(fract->win, 2, 1L << 0, event_key, fract);
 	mlx_hook(fract->win, 4, 1L << 2, event_mouse, fract);
     // mlx_clear_window(fract->mlx, fract->win); nodig?

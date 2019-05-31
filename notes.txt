@@ -21,3 +21,5 @@ TAKE TROUGH:
 -the location of the loop and hook functions
 -na lang inzoomen word die langzaam.
 -image freeze
+-statc functions 
+-veradneren van it_max met keycodes

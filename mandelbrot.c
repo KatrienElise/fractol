@@ -22,6 +22,7 @@ void    ft_mandelbrot_base(t_fractol *fract)
     fract->y = 0;
 	fract->infi = 4;
 	ft_get_color(fract);
+	color_stable(fract);
 	//fract->color = BLUE;
 }
 
@@ -46,7 +47,7 @@ void    ft_calc_mandel(t_fractol *fract)
 	if (fract->it == fract->it_max)
 		put_pixel_to_img(fract, fract->x, fract->y, fract->color.stable);
 	else
-		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * fract->it));
+		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * (fract->it)));
 }
 
 void    mandelbrot(t_fractol *fract)

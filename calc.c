@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void    square(t_fractol *fract)
+void square(t_fractol *fract)
 {
     /* fract->temp = (fract->a * fract->a) - (fract->b * fract->b);
      fract->b = 2.0 * fract->a * fract->b;
@@ -42,32 +42,31 @@ void  magnitude(t_fractol *fract)
      fract->z_i * fract->z_i;
 }
 
-void      ft_calc_zero(t_fractol *fract)
+void ft_calc_zero(t_fractol *fract)
 {
-    fract->name = 0;
-    fract->it_max = 0;
-    fract->it = 0;
-    //fract->color = 0;
-    fract->color.nb = 0;
-    fract->color.nb2 = 0;
-    fract->no_event = 0;
-    fract->shift = 0;
-    fract->color.c = 0;
-    fract->color.x = 0;
-	fract->zoom = 0; // the bigger the number the bigger the fract
-    fract->y = 0;
-    fract->x = 0;
+     fract->name = 0;
+     fract->it_max = 0;
+     fract->it = 0;
+     fract->color.nb = 0;
+     fract->color.nb2 = 0;
+     fract->no_event = 0;
+     fract->shift = 0;
+     fract->color.c = 0;
+     fract->color.x = 0;
+     fract->zoom = 0; // the bigger the number the bigger the fract
+     fract->y = 0;
+     fract->x = 0;
 	fract->x1 = 0; // these numbers decide where in the window the fract comes
-	fract->y1 = 0; //
-    fract->c_r = 0;
+	fract->y1 = 0;
+     fract->c_r = 0;
 	fract->z_i = 0;
 	fract->z_r = 0;
 	fract->c_i = 0;
-    fract->j_mouse = 0;
+     fract->j_mouse = 0;
 	fract->infi = 0;
-    fract->magni = 0;
+     fract->magni = 0;
 }
-void      calc_winw_winh(int ac, char **str, t_fractol *fract)
+void calc_winw_winh(int ac, char **str, t_fractol *fract)
 {
      if (ac == 4)
      {

@@ -50,6 +50,7 @@ typedef struct      s_fractol
     int             it_max;
     int             no_event;
     int             x;
+    int             temp;
     int             y;
     int             infi;
     int             j_mouse;

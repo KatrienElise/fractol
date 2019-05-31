@@ -13,19 +13,23 @@
 #ifndef COLOR_H
 # define COLOR_H
 
-# define BLUE 265
-# define RED 0xFA8072
-# define YELLOW 0xF9F909
-# define PINK 0x9A1F6A
+# define RED 005000001
+# define RED2 002000001
+# define BLUE 000000007
+# define GREEN 2050
+# define YELLOW 002004001
+# define PINK 200001001
+# define PINK2 002001005
+# define PURPLE 001000007
 # define LIGHT_BLUE 0x18E4E1
-# define GREEN 0x00FF00
+# define BROWN 002002002
 # define BLACK 0x000000
 # define WHITE 0xffffff
-# define ORANGE 0xEF8633
+# define ORANGE 00000000
 # define GOLD 0xFFD700
 # define SPRINGGREEN 0x00FF7F
 # define LIME 0x00FF00
-# define DARK_GREEN 0x006400
-# define LIGHT_GREEN 0x90EE90
+# define DARK_GREEN 201000
+# define LIGHT_GREEN 202001
 
 #endif
