@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/31 15:07:43 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/01 09:22:02 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int   event_shifts(int keycode, t_fractol *fract)
         if (fract->color.nb2 > 0)
             fract->color.nb2--;
     }
-    //ft_fract_base(fract);
     return (0);
 }
 int    event_key2(int keycode, t_fractol *fract)
@@ -77,7 +76,10 @@ int    event_key2(int keycode, t_fractol *fract)
     else if (keycode == KEY_I)
         fract->it_max = fract->it_max + 15;
     else if (keycode == KEY_O)
-        fract->it_max = fract->it_max - 15;
+    {
+        if (fract->it_max >= 15)
+            fract->it_max = fract->it_max - 15;
+    }
     else if (keycode == KEY_T)
     {
         if (fract->put_index == 0)
@@ -85,11 +87,15 @@ int    event_key2(int keycode, t_fractol *fract)
         else
             fract->put_index = 0;
     }
-    return(0);
+    else 
+        return (1);
+    return (0);
 }
 
 int    event_key(int keycode, t_fractol *fract)
 {
+    int res;
+
     if (keycode == KEY_ESC)
         exit_program(fract);
     else if (keycode == KEY_S)
@@ -117,10 +123,9 @@ int    event_key(int keycode, t_fractol *fract)
         event_shifts(keycode, fract);
     else if (keycode == KEY_J || keycode == KEY_M || keycode == KEY_B)
         event_key_change(keycode, fract);
-    event_key2(keycode, fract);
-    //else
-     //   fract->no_event = 1;
-    //ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4);
+    res = event_key2(keycode, fract);
+    if (res == 1)
+        fract->no_event = 1;
     ft_fract_base(fract);
     return (0);
 }

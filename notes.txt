@@ -20,7 +20,6 @@ TAKE TROUGH:
 -Gaat de zoom niet goed omdat x en y in x en y 1 worden gezet? 
 -na lang inzoomen word die langzaam.
 -static functions 
--veradneren van it_max met keycodes kan die minder dan 0 worden?:q
 
 
 -bus error 10

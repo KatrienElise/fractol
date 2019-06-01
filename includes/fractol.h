@@ -58,6 +58,7 @@ typedef struct      s_fractol
     int             move_hor;
     int             move_vert;
     int             put_index;
+    int             no_event;
 
     double          magni;
     double	    	zoom;
@@ -91,7 +92,7 @@ void    ft_get_color(t_fractol *fract);
 void    color_stable(t_fractol *fract);
 
 /* ************************************************************************** */
-/*          calc.c                                                           */
+/*          calc.c                                                            */
 /* ************************************************************************** */
 void    square(t_fractol *fract);
 void    magnitude(t_fractol *fract);
@@ -100,11 +101,18 @@ void      ft_calc_zero(t_fractol *fract);
 void     calc_winw_winh(int ac, char **av, t_fractol *fract);
 
 /* ************************************************************************** */
-/*          burningship.c                                                           */
+/*          burningship.c                                                     */
 /* ************************************************************************** */
 void    ft_burningship_base(t_fractol *fract);
 void    ft_calc_burningship(t_fractol *fract);
 void    burningship(t_fractol *fract);
+
+/* ************************************************************************** */
+/*          calc.c                                                            */
+/* ************************************************************************** */
+void    ft_sine_base(t_fractol *fract);
+void    ft_calc_sine(t_fractol *fract);
+void    sine(t_fractol *fract);
 
 /* ************************************************************************** */
 /*          event_key.c                                                       */

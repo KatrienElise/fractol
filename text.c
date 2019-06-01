@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/30 15:26:27 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/01 10:51:43 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ void    ft_put_text(t_fractol *fract)
 {
     mlx_string_put(fract->mlx, fract->win, 10, 10, WHITE, "katrien");
     if (fract->name == 1)
-        mlx_string_put(fract->mlx, fract->win, 150, 10, WHITE, "julia");
+        mlx_string_put(fract->mlx, fract->win, (fract->winw / 3), 10, WHITE, "julia");
     else if (fract->name == 2)
-        mlx_string_put(fract->mlx, fract->win, 150, 10, WHITE, "mandelbrot");
-    else
-        mlx_string_put(fract->mlx, fract->win, 150, 10, WHITE, "unknown");
+        mlx_string_put(fract->mlx, fract->win, (fract->winw / 3), 10, WHITE, "mandelbrot");
+    else if (fract->name == 3)
+        mlx_string_put(fract->mlx, fract->win, (fract->winw / 3), 10, WHITE, "burningship");
+    else 
+        mlx_string_put(fract->mlx, fract->win, (fract->winw / 3), 10, WHITE, "sine");
 }
 
 void    ft_text_index(t_fractol *fract)

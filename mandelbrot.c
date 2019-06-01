@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/31 15:10:15 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/01 10:54:59 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ void    ft_mandelbrot_base(t_fractol *fract)
     	fract->it_max = 30;
 	if (fract->zoom == 0)
 		fract->zoom = 1.3; // the bigger the number the bigger the fract
-	fract->x1 = -0.7; // these numbers decide where in the window the fract comes
-	fract->y1 = 0; //
-    fract->y = 0;
+	if (!fract->x1)
+		fract->x1 = -0.7;
+	if (fract->y1)
+		fract->y1 = 0; 
+  fract->y = 0;
 	fract->infi = 4;
 	ft_get_color(fract);
 	color_stable(fract);
@@ -29,23 +31,24 @@ void    ft_mandelbrot_base(t_fractol *fract)
 
 void    ft_calc_mandel(t_fractol *fract)
 {
-	//below: the / 0.25, the bigger the number the bigger the fract in the wind. 
-    fract->c_r = (fract->x - fract->winw / 2) / 
-		( 0.25 * fract->zoom * fract->winw) + fract->x1; // brengt 0,0 naar midden?
+
+  fract->c_r = (fract->x - fract->winw / 2) / 
+		( 0.25 * fract->zoom * fract->winw) + fract->x1;
 	fract->c_i = (fract->y - fract->winh / 2) / 
 		( 0.25 * fract->zoom * fract->winh) + fract->y1;
 	fract->z_r = 0;
 	fract->z_i = 0;
 	fract->it = 0;
 	magnitude(fract);
-	while (fract->magni < fract->infi && fract->it < fract->it_max) // magni berekenen, 
-            // gaat het naar infiniti of niet. 
+	while (fract->magni < fract->infi && fract->it < fract->it_max)
 	{
 		square(fract);
 		fract->it++;
 		magnitude(fract);
 	}
-	if (fract->it == fract->it_max)
+	if (fract->it == fract->it_max && (fract->x + fract->move_hor < \
+				fract->winw) && (fract-> y + fract->move_vert < fract->winh) \
+				&& (fract->y + fract->move_vert > 0)) //maakt niet uit voor error
 		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, fract->color.stable);
 	else
 		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, (fract->color.base * (fract->it)));

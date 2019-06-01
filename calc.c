@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/31 14:31:53 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/01 08:34:56 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,33 @@ void square(t_fractol *fract)
      fract->b = 2.0 * fract->a * fract->b;
      fract->a = fract->temp;
      */
-     fract->tmp = fract->z_r;
-     if (fract->name == 2)
+    if (fract->name == 1)
      {
-          fract->z_r = fract->z_r * fract->z_r - \
-		     fract->z_i * fract->z_i + fract->c_r;
-	     fract->z_i = 2 * fract->z_i * fract->tmp + fract->c_i;
-     }
-     
-     else if (fract->name == 1)
-     {
+          fract->tmp = fract->z_r;
          // number between 0.3 and 2
           fract->z_r = fract->z_r * fract->z_r - \
 		     fract->z_i * fract->z_i - fract->change_jul + (fract->c_r / fract->winw);
 	     fract->z_i = 2 * fract->z_i * fract->tmp + (fract->c_i / fract->winh);
      }
+     
+     else if (fract->name == 2)
+     {
+          fract->tmp = fract->z_r;
+          fract->z_r = fract->z_r * fract->z_r - \
+		     fract->z_i * fract->z_i + fract->c_r;
+	     fract->z_i = 2 * fract->z_i * fract->tmp + fract->c_i;
+     }
+
+     else if (fract->name == 3)
+     {
+         // fract->tmp = fract->z_r;
+          fract->tmp = fract->z_r * fract->z_r - fract->z_i * fract->z_i + fract->c_r;
+        // fract->z_r = fract->z_r * fract->z_r - \
+		//     fract->z_i * fract->z_i + fract->c_r;
+	     fract->z_i = fabs(2 * fract->z_i * fract->tmp) + fract->c_i;
+		fract->z_r = fract->tmp;
+     }
+
      
 }
 

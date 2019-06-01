@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/31 14:52:28 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/01 10:47:41 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,20 @@ int		mouse_julia(int x, int y, t_fractol *fract)
 
 void    ft_in_zoom(int x, int y , t_fractol *fract)
 {
-    x = 0;
-    y = 0;
+   // x = 0;
+    //y = 0;
+    // x and y have to become the new center points. 
     printf("ZOOM: it_max is: %d, fract->x1: %f, fract->zoom: %f\n", fract->it_max, fract->x1, fract->zoom);
     //fract->x1 = (x / fract->zoom + fract->x1) - (x / (fract->zoom * 1.3));
 	//fract->y1 = (y / fract->zoom + fract->y1) - (y / (fract->zoom * 1.3));
-   // fract->y += (y - fract->winh / 2) * 0.05 / fract->zoom;
-	//fract->x += (x - fract->winw / 2) * 0.05 / fract->zoom;
+
+	//fract->x1 += (x - fract->winw / 2) * 0.05 / fract->zoom;
+    //fract->y1 += (y - fract->winh / 2) * 0.05 / fract->zoom;
+
+	fract->x1 += (x - fract->winw / 2) / fract->winw / fract->zoom;
+    fract->y1 += (y - fract->winh / 2) / fract->winh / fract->zoom;
 	//fract->zoom = fract->zoom + 0.3;    
-	fract->zoom /= 0.5;
+	fract->zoom = fract->zoom + 0.5;
 	fract->it_max++;
 }
 
@@ -52,7 +57,7 @@ void    ft_out_zoom(int x, int y , t_fractol *fract)
     fract->x = (x / fract->zoom + fract->x1)  - (x / (fract->zoom / 1.3));
 	fract->y = (y / fract->zoom + fract->y1) - (y / (fract->zoom / 1.3));
 	fract->zoom = fract->zoom - 0.5;
-	//c=fract->it_max--;
+	fract->it_max--;
 }
 
 int    event_mouse_move(int x, int y, t_fractol *fract)
@@ -73,7 +78,7 @@ int    event_mouse(int mousecode, int x, int y, t_fractol *fract)
         ft_in_zoom(x, y, fract);
     else if (mousecode == 2 || mousecode == 4)
         ft_out_zoom(x, y, fract);
-    ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4);
+    //ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4);
     ft_fract_base(fract);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/31 14:02:48 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/01 08:51:07 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void    ft_fract_set(t_fractol *fract)
         mandelbrot(fract);
     else if (fract->name == 3)
         burningship(fract);
+    else if (fract->name == 4)
+        sine(fract);
     mlx_put_image_to_window(fract->mlx, fract->win, fract->img, 0, 0);
     if (fract->put_index == 1)
        ft_text_index(fract);
@@ -43,6 +45,8 @@ void    ft_fract_base(t_fractol *fract)
         ft_mandelbrot_base(fract);
     else if (fract->name == 3)
         ft_burningship_base(fract);
+    else if (fract->name == 4)
+        ft_sine_base(fract);
     ft_fract_set(fract); 
 }
 
@@ -54,9 +58,11 @@ int    ft_fract_compare(char **str, int ac, t_fractol *fract)
         fract->name = 2; 
     else if (ft_strcmp(str[1], "burningship") == 0)
         fract->name = 3;
+    else if (ft_strcmp(str[1], "sine") == 0)
+        fract->name = 4;
     else
     {
-        ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\", \"burningship\"\n");
+        ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\", \"burningship\", \"sine\"\n");
         return (0);
     }
     calc_winw_winh(ac, str, fract);

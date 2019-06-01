@@ -1,49 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   julia.c                                            :+:    :+:            */
+/*   sine.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/01 09:25:46 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/01 09:10:20 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void    ft_julia_base(t_fractol *fract)
+void    ft_sine_base(t_fractol *fract)
 {
 	if (!fract->it_max)
-    	fract->it_max = 30;
+    	fract->it_max = 100;
 	if (fract->zoom == 0)
-		fract->zoom = 1.3;
-	fract->x1 = 0;
-	fract->y1 = 0;
+		fract->zoom = 1.3; // the bigger the number the bigger the fract
+	fract->x1 = 0; // these numbers decide where in the window the fract comes
+	fract->y1 = 0; //
     fract->y = 0;
-    if (fract->j_mouse == 0)
-    {
-        fract->c_r = 0.285;
-        fract->c_i = 0.08;
-    }
 	fract->infi = 4;
 	ft_get_color(fract);
 	color_stable(fract);
-    }
+	//fract->color = BLUE;
+}
 
-void    ft_calc_julia(t_fractol *fract)
-{ 
-    fract->z_r = (fract->x - fract->winw / 2) / 
-		( 0.25 * fract->zoom * fract->winw) + fract->x1;
-	fract->z_i = (fract->y - fract->winh / 2) / 
-		( 0.35 * fract->zoom * fract->winh) + fract->y1;
-	fract->it = 0;
-	magnitude(fract);
-	while (fract->magni < fract->infi && fract->it < fract->it_max)
+void    ft_calc_sine(t_fractol *fract)
+{
+	fract->c_r = ((fract->z_r / fract->winw) * 5 - 2.5) / fract->zoom + fract->x1;
+	fract->c_i = ((fract->z_i / fract->winh) * 5 - 2.5) / fract->zoom + fract->y1;
+	//iteration = 0;
+	fract->z_r = 0;
+	fract->z_i = 0;
+	while (fract->z_r * fract->z_r + fract->z_i * fract->z_i < 31.415926536 && (fract->it < fract->it_max))
 	{
-		square(fract);
+		fract->z_r = sin(fract->z_r) * cosh(fract->z_i) + fract->c_r;
+		fract->z_i = cos(fract->z_r) * sinh(fract->z_i) + fract->c_i;
+		fract->x = fract->z_r;
+		fract->y = fract->z_i;
 		fract->it++;
-		magnitude(fract);
 	}
 	if (fract->it == fract->it_max)
 		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, fract->color.stable);
@@ -51,15 +48,15 @@ void    ft_calc_julia(t_fractol *fract)
 		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, (fract->color.base * (fract->it)));
 }
 
-void    julia(t_fractol *fract)
+void    sine(t_fractol *fract)
 {
-    fract->x = 0;
+	fract->x = 0;
 	while (fract->y < fract->winh)
 	{
-		fract->x = fract->temp;
+		fract->x = 0;
 		while (fract->x < fract->winw)
 		{
-			ft_calc_julia(fract);
+			ft_calc_sine(fract);
 			fract->x++;
 		}
 		fract->y++;
