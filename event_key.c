@@ -19,7 +19,7 @@ int     event_key_change(int keycode, t_fractol *fract)
         fract->name = 1;
      else if (keycode == KEY_M)
         fract->name = 2;
-     else if (keycode == KEY_U)
+     else if (keycode == KEY_B)
         fract->name = 3;
     ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4);
     ft_fract_base(fract);
@@ -78,6 +78,13 @@ int    event_key2(int keycode, t_fractol *fract)
         fract->it_max = fract->it_max + 15;
     else if (keycode == KEY_O)
         fract->it_max = fract->it_max - 15;
+    else if (keycode == KEY_T)
+    {
+        if (fract->put_index == 0)
+            fract->put_index = 1;
+        else
+            fract->put_index = 0;
+    }
     return(0);
 }
 
@@ -108,7 +115,7 @@ int    event_key(int keycode, t_fractol *fract)
     }
     else if (keycode == KEY_PLUS || keycode == KEY_MIN)
         event_shifts(keycode, fract);
-    else if (keycode == KEY_J || keycode == KEY_M || keycode == KEY_U)
+    else if (keycode == KEY_J || keycode == KEY_M || keycode == KEY_B)
         event_key_change(keycode, fract);
     event_key2(keycode, fract);
     //else

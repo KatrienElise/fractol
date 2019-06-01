@@ -22,3 +22,16 @@ void    ft_put_text(t_fractol *fract)
     else
         mlx_string_put(fract->mlx, fract->win, 150, 10, WHITE, "unknown");
 }
+
+void    ft_text_index(t_fractol *fract)
+{
+    mlx_string_put(fract->mlx, fract->win, 10, 30, WHITE, "q        = quit mouse julia");
+    mlx_string_put(fract->mlx, fract->win, 10, 45, WHITE, "m, j, u  = change fractal");
+    mlx_string_put(fract->mlx, fract->win, 10, 65, WHITE, "s        = shift to julia change");
+    mlx_string_put(fract->mlx, fract->win, 10, 85, WHITE, "c        = change color unstable");
+    mlx_string_put(fract->mlx, fract->win, 10, 105, WHITE, "x       = change color stable");
+    mlx_string_put(fract->mlx, fract->win, 10, 125, WHITE, "+, -    = changer s, c, x");
+    mlx_string_put(fract->mlx, fract->win, 10, 145, WHITE, "spatie  = reset");
+    mlx_string_put(fract->mlx, fract->win, 10, 165, WHITE, "o, i    = change iteratioins");
+    mlx_string_put(fract->mlx, fract->win, 10, 185, WHITE, "esc     = quit program");
+}

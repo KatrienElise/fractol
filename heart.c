@@ -28,8 +28,10 @@ void    ft_fract_set(t_fractol *fract)
     if (fract->name == 2)
         mandelbrot(fract);
     else if (fract->name == 3)
-        unknown(fract);
+        burningship(fract);
     mlx_put_image_to_window(fract->mlx, fract->win, fract->img, 0, 0);
+    if (fract->put_index == 1)
+       ft_text_index(fract);
     ft_put_text(fract);
     //ft_reset(fract);
 }
@@ -40,7 +42,7 @@ void    ft_fract_base(t_fractol *fract)
     else if (fract->name == 2)
         ft_mandelbrot_base(fract);
     else if (fract->name == 3)
-        ft_unknown_base(fract);
+        ft_burningship_base(fract);
     ft_fract_set(fract); 
 }
 
@@ -50,11 +52,11 @@ int    ft_fract_compare(char **str, int ac, t_fractol *fract)
         fract->name = 1;
     else if (ft_strcmp(str[1], "mandelbrot") == 0)
         fract->name = 2; 
-    else if (ft_strcmp(str[1], "unknown") == 0)
+    else if (ft_strcmp(str[1], "burningship") == 0)
         fract->name = 3;
     else
     {
-        ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\", \"unknown\"\n");
+        ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\", \"burningship\"\n");
         return (0);
     }
     calc_winw_winh(ac, str, fract);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   unknown.c                                          :+:    :+:            */
+/*   burningship.c                                          :+:    :+:        */
 /*                                                     +:+                    */
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void    ft_unknown_base(t_fractol *fract)
+void    ft_burningship_base(t_fractol *fract)
 {
     fract->it_max = 30;
 	fract->zoom = 1.3;
@@ -23,7 +23,7 @@ void    ft_unknown_base(t_fractol *fract)
 	fract->infi = 4; //hoe groter infi hoe meer detai. 
 }
 
-void    ft_calc_unknown(t_fractol *fract)
+void    ft_calc_burningship(t_fractol *fract)
 {
 	fract->c_r = (fract->x - fract->winw / 2) / 
 		( 0.25 * fract->zoom * fract->winw) + fract->x1; // brengt 0,0 naar midden?
@@ -45,7 +45,7 @@ void    ft_calc_unknown(t_fractol *fract)
 		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * fract->it));
 }
 
-void    unknown(t_fractol *fract)
+void    burningship(t_fractol *fract)
 {
     ft_putendl("unknwon:");
 	fract->x = 0;
@@ -55,7 +55,7 @@ void    unknown(t_fractol *fract)
 		fract->x = fract->tmp;
 		while (fract->x < fract->winw)
 		{
-			ft_calc_unknown(fract);
+			ft_calc_burningship(fract);
 			fract->x++;
 		}
 		fract->y++;

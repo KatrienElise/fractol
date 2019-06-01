@@ -20,9 +20,19 @@ TAKE TROUGH:
 -Gaat de zoom niet goed omdat x en y in x en y 1 worden gezet? 
 -na lang inzoomen word die langzaam.
 -static functions 
--veradneren van it_max met keycodes kan die minder dan 0 worden?
--button to show which shift keys are on 
--index welke toets wat doet
+-veradneren van it_max met keycodes kan die minder dan 0 worden?:q
+
+
+-bus error 10
+In other words the memory tried to access by the program is 
+not a valid memory address.
+-segmentation fault 11
+In other words when the program tries to access the 
+memory to which it doesn’t have access to.when the program tries to write/read 
+outside the memory allocated for it or when writing memory which can only be read.
+
+The main difference between Segmentation Fault and Bus Error is that Segmentation Fault indicates an invalid 
+access to a valid memory, while Bus Error indicates an access to an invalid address.
 
 BONUS:
 -change stable colors

@@ -57,7 +57,8 @@ typedef struct      s_fractol
     int             shift;
     int             move_hor;
     int             move_vert;
-    
+    int             put_index;
+
     double          magni;
     double	    	zoom;
 	double	    	x1;
@@ -99,11 +100,11 @@ void      ft_calc_zero(t_fractol *fract);
 void     calc_winw_winh(int ac, char **av, t_fractol *fract);
 
 /* ************************************************************************** */
-/*          unknown.c                                                           */
+/*          burningship.c                                                           */
 /* ************************************************************************** */
-void    ft_unknown_base(t_fractol *fract);
-void    ft_calc_unknown(t_fractol *fract);
-void    unknown(t_fractol *fract);
+void    ft_burningship_base(t_fractol *fract);
+void    ft_calc_burningship(t_fractol *fract);
+void    burningship(t_fractol *fract);
 
 /* ************************************************************************** */
 /*          event_key.c                                                       */
@@ -155,5 +156,6 @@ void    error(t_fractol *fract, int d);
 /*          text.c                                                            */
 /* ************************************************************************** */
 void    ft_put_text(t_fractol *fract);
+void    ft_text_index(t_fractol *fract);
 
 #endif
