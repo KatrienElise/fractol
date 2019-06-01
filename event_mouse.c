@@ -35,28 +35,36 @@ int		mouse_julia(int x, int y, t_fractol *fract)
 
 void    ft_in_zoom(int x, int y , t_fractol *fract)
 {
-   // x = 0;
-    //y = 0;
+    x = 0;
+    y = 0;
     // x and y have to become the new center points. 
     printf("ZOOM: it_max is: %d, fract->x1: %f, fract->zoom: %f\n", fract->it_max, fract->x1, fract->zoom);
     //fract->x1 = (x / fract->zoom + fract->x1) - (x / (fract->zoom * 1.3));
 	//fract->y1 = (y / fract->zoom + fract->y1) - (y / (fract->zoom * 1.3));
 
 	//fract->x1 += (x - fract->winw / 2) * 0.05 / fract->zoom;
-    //fract->y1 += (y - fract->winh / 2) * 0.05 / fract->zoom;
+   //fract->y1 += (y - fract->winh / 2) * 0.05 / fract->zoom;
 
-	fract->x1 += (x - fract->winw / 2) / fract->winw / fract->zoom;
-    fract->y1 += (y - fract->winh / 2) / fract->winh / fract->zoom;
-	//fract->zoom = fract->zoom + 0.3;    
-	fract->zoom = fract->zoom + 0.5;
+	//fract->x1 += (x - fract->winw / 2) / fract->winw / fract->zoom;
+    //fract->y1 += (y - fract->winh / 2) / fract->winh / fract->zoom;
+
+    //fract->x1 = (x / fract->zoom + fract->x1) - (fract->winw / 2 / (fract->zoom * 1.3));
+    //fract->y1 = (y / fract->zoom + fract->y1) - (fract->winh / 2/ (fract->zoom * 1.3));
+    //fract->x1 = fract->winw / x
+	//fract->zoom = fract->zoom + 0.3; 
+    //fract->x1 = fract->x1 - 0.03; 
+    //fract->y1 = fract->y1 - 0.03;
+	fract->zoom = fract->zoom * 1.5;
 	fract->it_max++;
 }
 
 void    ft_out_zoom(int x, int y , t_fractol *fract)
 {
-    fract->x = (x / fract->zoom + fract->x1)  - (x / (fract->zoom / 1.3));
-	fract->y = (y / fract->zoom + fract->y1) - (y / (fract->zoom / 1.3));
-	fract->zoom = fract->zoom - 0.5;
+    x = 0;
+    y = 0;
+   // fract->x = (x / fract->zoom + fract->x1)  - (x / (fract->zoom / 1.3));
+	//fract->y = (y / fract->zoom + fract->y1) - (y / (fract->zoom / 1.3));
+	fract->zoom = fract->zoom * 1.5;
 	fract->it_max--;
 }
 

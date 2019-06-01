@@ -20,7 +20,7 @@ void    ft_mandelbrot_base(t_fractol *fract)
 		fract->zoom = 1.3; // the bigger the number the bigger the fract
 	if (!fract->x1)
 		fract->x1 = -0.7;
-	if (fract->y1)
+	if (!fract->y1)
 		fract->y1 = 0; 
   fract->y = 0;
 	fract->infi = 4;
@@ -32,7 +32,7 @@ void    ft_mandelbrot_base(t_fractol *fract)
 void    ft_calc_mandel(t_fractol *fract)
 {
 
-  fract->c_r = (fract->x - fract->winw / 2) / 
+  	fract->c_r = (fract->x - fract->winw / 2) / 
 		( 0.25 * fract->zoom * fract->winw) + fract->x1;
 	fract->c_i = (fract->y - fract->winh / 2) / 
 		( 0.25 * fract->zoom * fract->winh) + fract->y1;
@@ -46,12 +46,10 @@ void    ft_calc_mandel(t_fractol *fract)
 		fract->it++;
 		magnitude(fract);
 	}
-	if (fract->it == fract->it_max && (fract->x + fract->move_hor < \
-				fract->winw) && (fract-> y + fract->move_vert < fract->winh) \
-				&& (fract->y + fract->move_vert > 0)) //maakt niet uit voor error
-		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, fract->color.stable);
+	if (fract->it == fract->it_max) //maakt niet uit voor error
+		put_pixel_to_img(fract, fract->x, fract->y, fract->color.stable);
 	else
-		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, (fract->color.base * (fract->it)));
+		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * (fract->it)));
 }
 
 void    mandelbrot(t_fractol *fract)

@@ -18,10 +18,12 @@ void    ft_burningship_base(t_fractol *fract)
     	fract->it_max = 30;
 	if(!fract->zoom)
 		fract->zoom = 1.3;
-	fract->x1 = -0.7;
-	fract->y1 = 0; 
+	if (!fract->x1)
+		fract->x1 = -0.5;
+	if (!fract->y1)
+		fract->y1 = -0.2; 
     fract->y = 0;
-	fract->infi = 4; //hoe groter infi hoe meer detai. 
+	fract->infi = 3; //hoe groter infi hoe meer detai. 
 	ft_get_color(fract);
 	color_stable(fract);
 }
@@ -29,11 +31,11 @@ void    ft_burningship_base(t_fractol *fract)
 void    ft_calc_burningship(t_fractol *fract)
 {
 	fract->c_r = (fract->x - fract->winw / 2) / 
-		( 0.25 * fract->zoom * fract->winw) + fract->x1; // brengt 0,0 naar midden?
+		( 0.5 * fract->zoom * fract->winw) + fract->x1; // brengt 0,0 naar midden?
 	fract->c_i = (fract->y - fract->winh / 2) / 
-		( 0.25 * fract->zoom * fract->winh) + fract->y1;
-	fract->z_r = 0; // is x?
-	fract->z_i = 0; // is y?
+		( 0.5 * fract->zoom * fract->winh) + fract->y1;
+	fract->z_r = 0;
+	fract->z_i = 0;
 	fract->it = 0;
 	magnitude(fract);
 	while (fract->magni < fract->infi && fract->it < fract->it_max)
@@ -43,7 +45,7 @@ void    ft_calc_burningship(t_fractol *fract)
 		magnitude(fract);
 	}
 	if (fract->it == fract->it_max)
-		put_pixel_to_img(fract, fract->x, fract->y, BLACK);
+		put_pixel_to_img(fract, fract->x, fract->y, fract->color.stable);
 	else
 		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * fract->it));
 }

@@ -18,8 +18,10 @@ void    ft_julia_base(t_fractol *fract)
     	fract->it_max = 30;
 	if (fract->zoom == 0)
 		fract->zoom = 1.3;
-	fract->x1 = 0;
-	fract->y1 = 0;
+	if (!fract->x1)
+		fract->x1 = 0;
+	if (fract->y1)
+		fract->y1 = 0;
     fract->y = 0;
     if (fract->j_mouse == 0)
     {
@@ -46,9 +48,9 @@ void    ft_calc_julia(t_fractol *fract)
 		magnitude(fract);
 	}
 	if (fract->it == fract->it_max)
-		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, fract->color.stable);
+		put_pixel_to_img(fract, fract->x, fract->y, fract->color.stable);
 	else
-		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, (fract->color.base * (fract->it)));
+		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * (fract->it)));
 }
 
 void    julia(t_fractol *fract)

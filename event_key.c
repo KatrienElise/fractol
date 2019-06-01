@@ -64,13 +64,13 @@ int    event_key2(int keycode, t_fractol *fract)
             fract->quit_mouse = 0;            
     }
     else if (keycode == KEY_RIGHT)
-        fract->move_hor = fract->move_hor + 10;
+        fract->x1 = fract->x1 - 0.04;
     else if (keycode == KEY_LEFT)
-        fract->move_hor = fract->move_hor - 10;
+        fract->x1 = fract->x1 + 0.04;
     else if (keycode == KEY_DOWN)
-        fract->move_vert = fract->move_vert + 10;
+        fract->y1 = fract->y1 - 0.04;
     else if (keycode == KEY_UP)
-        fract->move_vert = fract->move_vert -10;
+        fract->y1 = fract->y1 + 0.04;
     else if (keycode == KEY_SPATIE)
         ft_calc_zero(fract);
     else if (keycode == KEY_I)
