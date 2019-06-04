@@ -23,7 +23,7 @@ void    ft_burningship_base(t_fractol *fract)
 	if (!fract->y1)
 		fract->y1 = -0.2; 
     fract->y = 0;
-	fract->infi = 3; //hoe groter infi hoe meer detai. 
+	fract->infi = 3; 
 	ft_get_color(fract);
 	color_stable(fract);
 }

@@ -25,7 +25,7 @@ void    ft_julia_base(t_fractol *fract)
     fract->y = 0;
     if (fract->j_mouse == 0)
     {
-        fract->c_r = 0.285;
+        fract->c_r = 0.285; //0.285
         fract->c_i = 0.08;
     }
 	fract->infi = 4;
@@ -58,7 +58,7 @@ void    julia(t_fractol *fract)
     fract->x = 0;
 	while (fract->y < fract->winh)
 	{
-		fract->x = fract->temp;
+		fract->x = 0;
 		while (fract->x < fract->winw)
 		{
 			ft_calc_julia(fract);

@@ -17,7 +17,8 @@ int     main(int ac, char **av)
     if (ac == 2 || ac == 4)
       entry(av, ac);
     else
-      ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\", \"burningship\", \"sine\"\n");
-      ft_putstr(" option: winwith winheight\n");
+      ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\"");
+      ft_putstr(" \"burningship\", \"sine\"\n");
+      ft_putstr("option: winwith winheight\n");
     return (0); 
 }

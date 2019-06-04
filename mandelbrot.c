@@ -46,7 +46,7 @@ void    ft_calc_mandel(t_fractol *fract)
 		fract->it++;
 		magnitude(fract);
 	}
-	if (fract->it == fract->it_max) //maakt niet uit voor error
+	if (fract->it == fract->it_max)
 		put_pixel_to_img(fract, fract->x, fract->y, fract->color.stable);
 	else
 		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * (fract->it)));

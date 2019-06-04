@@ -2,9 +2,11 @@
 TAKE TROUGH:
 -zoom maken
 (moet die kunnen zoomen op positie van muis?)
+-langzaam bij zoom
 -bus error met openen programma 
 -static functions 
 -basis formule voor burningship
+-mouse julia hoe verandert hij 
 
 
 -bus error 10

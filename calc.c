@@ -21,9 +21,9 @@ void square(t_fractol *fract)
     if (fract->name == 1)
      {
           fract->tmp = fract->z_r;
-         // number between 0.3 and 2
           fract->z_r = fract->z_r * fract->z_r - \
-		     fract->z_i * fract->z_i - fract->change_jul + (fract->c_r / fract->winw);
+		     fract->z_i * fract->z_i - fract->change_jul + \
+               (fract->c_r / fract->winw);
 	     fract->z_i = 2 * fract->z_i * fract->tmp + (fract->c_i / fract->winh);
      }
      
@@ -87,11 +87,11 @@ void calc_winw_winh(int ac, char **str, t_fractol *fract)
      {
          if (ft_isdigit_string(str[2]) == 1 && ft_isdigit_string(str[3]) == 1)
          {
-            fract->winw = ft_atoi(str[2]);
-            fract->winh = ft_atoi(str[3]);
+               fract->winw = ft_atoi(str[2]);
+               fract->winh = ft_atoi(str[3]);
          }
-         else
-          error(fract, 2);
+          else
+               error(fract, 2);
      }
     else
     {

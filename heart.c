@@ -15,7 +15,8 @@
 void    ft_win_mlx_img(t_fractol *fract)
 {
     fract->mlx = mlx_init();
-    fract->win = mlx_new_window(fract->mlx, fract->winw, fract->winh, "FRACTOL");
+    fract->win = mlx_new_window(fract->mlx, fract->winw, fract->winh, \
+        "HAPPY FRACTOL");
 	fract->img = mlx_new_image(fract->mlx, fract->winw, fract->winh);
 	fract->data_addr = mlx_get_data_addr(fract->img,\
 	&fract->bpp, &fract->sl, &fract->endian);
@@ -25,17 +26,17 @@ void    ft_fract_set(t_fractol *fract)
 {
     if (fract->name == 1)
         julia(fract);
-    if (fract->name == 2)
+    else if (fract->name == 2)
         mandelbrot(fract);
     else if (fract->name == 3)
         burningship(fract);
-    else if (fract->name == 4)
+    else
         sine(fract);
     mlx_put_image_to_window(fract->mlx, fract->win, fract->img, 0, 0);
     if (fract->put_index == 1)
        ft_text_index(fract);
     ft_put_text(fract);
-    //ft_reset(fract);
+    //ft_reset_numbers(fract);
 }
 void    ft_fract_base(t_fractol *fract)
 {
@@ -45,7 +46,7 @@ void    ft_fract_base(t_fractol *fract)
         ft_mandelbrot_base(fract);
     else if (fract->name == 3)
         ft_burningship_base(fract);
-    else if (fract->name == 4)
+    else
         ft_sine_base(fract);
     ft_fract_set(fract); 
 }
@@ -62,7 +63,8 @@ int    ft_fract_compare(char **str, int ac, t_fractol *fract)
         fract->name = 4;
     else
     {
-        ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\", \"burningship\", \"sine\"\n");
+        ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\"");
+        ft_putstr(" \"burningship\", \"sine\"\n");
         return (0);
     }
     calc_winw_winh(ac, str, fract);
@@ -76,7 +78,7 @@ int     entry(char **av, int ac)
     fract = (t_fractol *) malloc(sizeof(t_fractol));
     if (!fract)
         error_no_struct(1);
-    ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4); // zet bzero alles naar nul wat er in de struct staat?
+    ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4);
     //ft_calc_zero(fract);
     if (ft_fract_compare(av, ac, fract) == 0)
         error(fract, 1);
