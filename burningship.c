@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/01 08:45:42 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/05 17:56:02 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,25 @@ void    ft_burningship_base(t_fractol *fract)
 		fract->y1 = -0.2; 
     fract->y = 0;
 	fract->infi = 3; 
-	ft_get_color(fract);
-	color_stable(fract);
+	if (fract->color.nb != 0 || fract->color.stable != 0)
+	{
+		ft_get_color(fract);
+		color_stable(fract);
+	}
+	else
+	{
+		fract->color.base = BLUE;
+		fract->color.stable = BLACK;
+	}	
 }
 
-void    ft_calc_burningship(t_fractol *fract)
+static void  magnitude(t_fractol *fract)
+{
+    fract->magni = fract->z_r * fract->z_r + 
+     fract->z_i * fract->z_i;
+}
+
+static void    ft_calc_burningship(t_fractol *fract)
 {
 	fract->c_r = (fract->x - fract->winw / 2) / 
 		( 0.5 * fract->zoom * fract->winw) + fract->x1; // brengt 0,0 naar midden?
@@ -40,7 +54,13 @@ void    ft_calc_burningship(t_fractol *fract)
 	magnitude(fract);
 	while (fract->magni < fract->infi && fract->it < fract->it_max)
 	{
-		square(fract);
+		//square(fract);
+    // fract->tmp = fract->z_r;
+    fract->tmp = fract->z_r * fract->z_r - fract->z_i * fract->z_i + fract->c_r;
+    // fract->z_r = fract->z_r * fract->z_r - \
+		// fract->z_i * fract->z_i + fract->c_r;
+	     fract->z_i = fabs(2 * fract->z_i * fract->tmp) + fract->c_i;
+		fract->z_r = fract->tmp;
 		fract->it++;
 		magnitude(fract);
 	}

@@ -6,13 +6,13 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/01 08:51:07 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/05 17:25:53 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void    ft_win_mlx_img(t_fractol *fract)
+static void    ft_win_mlx_img(t_fractol *fract)
 {
     fract->mlx = mlx_init();
     fract->win = mlx_new_window(fract->mlx, fract->winw, fract->winh, \

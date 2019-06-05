@@ -79,7 +79,7 @@ typedef struct      s_fractol
 /* ************************************************************************** */
 /*          heart.c                                                           */
 /* ************************************************************************** */
-void    ft_win_mlx_img(t_fractol *fract);
+//void    ft_win_mlx_img(t_fractol *fract);
 int     ft_fractol_compare(char *str, int ac, t_fractol *fract);
 void    ft_fract_base(t_fractol *fract);
 void    ft_fract_set(t_fractol *fract);
@@ -94,9 +94,9 @@ void    color_stable(t_fractol *fract);
 /* ************************************************************************** */
 /*          calc.c                                                            */
 /* ************************************************************************** */
-void    square(t_fractol *fract);
-void    magnitude(t_fractol *fract);
-void    add(t_fractol *fract);
+//void    square(t_fractol *fract);
+//void    magnitude(t_fractol *fract);
+//void    add(t_fractol *fract);
 void      ft_calc_zero(t_fractol *fract);
 void     calc_winw_winh(int ac, char **av, t_fractol *fract);
 
@@ -104,11 +104,11 @@ void     calc_winw_winh(int ac, char **av, t_fractol *fract);
 /*          burningship.c                                                     */
 /* ************************************************************************** */
 void    ft_burningship_base(t_fractol *fract);
-void    ft_calc_burningship(t_fractol *fract);
+//void    ft_calc_burningship(t_fractol *fract);
 void    burningship(t_fractol *fract);
 
 /* ************************************************************************** */
-/*          calc.c                                                            */
+/*          sine.c                                                            */
 /* ************************************************************************** */
 void    ft_sine_base(t_fractol *fract);
 void    ft_calc_sine(t_fractol *fract);
@@ -117,17 +117,17 @@ void    sine(t_fractol *fract);
 /* ************************************************************************** */
 /*          event_key.c                                                       */
 /* ************************************************************************** */
-int     event_key2(int keycode, t_fractol *fract);
+//int     event_key2(int keycode, t_fractol *fract);
 int     event_key(int keycode, t_fractol *fract);
-int     event_shifts(int keycode, t_fractol *fract);
-int     event_key_change(int keycode, t_fractol *fract);
+//int     event_shifts(int keycode, t_fractol *fract);
+//int     event_key_change(int keycode, t_fractol *fract);
 
 /* ************************************************************************** */
 /*          event_mouse.c                                                       */
 /* ************************************************************************** */
-int		mouse_julia(int x, int y, t_fractol *fract);
-void    ft_out_zoom(int x, int y, t_fractol *fract);
-void    ft_in_zoom(int x, int y, t_fractol *fract);
+//int	mouse_julia(int x, int y, t_fractol *fract);
+//void  ft_out_zoom(int x, int y, t_fractol *fract);
+//void  ft_in_zoom(int x, int y, t_fractol *fract);
 int     event_mouse(int mousecode, int x, int y, t_fractol *fract);
 int     event_mouse_move(int x, int y, t_fractol *fract);
 
@@ -135,16 +135,15 @@ int     event_mouse_move(int x, int y, t_fractol *fract);
 /* ************************************************************************** */
 /*          julia.c                                                          */
 /* ************************************************************************** */
-int     mouse_julia(int x, int y, t_fractol *fract);
 void    ft_julia_base(t_fractol *fract);
-void    ft_calc_julia(t_fractol *fract);
+//void    ft_calc_julia(t_fractol *fract);
 void    julia(t_fractol *fract);
 
 /* ************************************************************************** */
 /*          mandelbrot.c                                                      */
 /* ************************************************************************** */
 void    ft_mandelbrot_base(t_fractol *fract);
-void    ft_calc_mandel(t_fractol *fract);
+//void    ft_calc_mandel(t_fractol *fract);
 void    mandelbrot(t_fractol *fract);
 
 /* ************************************************************************** */

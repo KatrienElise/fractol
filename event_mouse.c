@@ -6,13 +6,13 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/01 10:47:41 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/05 17:14:53 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		mouse_julia(int x, int y, t_fractol *fract)
+static int		mouse_julia(int x, int y, t_fractol *fract)
 {   
 	if (fract->name == 1 && fract->j_mouse == 1)
 	{
@@ -31,10 +31,10 @@ int		mouse_julia(int x, int y, t_fractol *fract)
 	return (0);
 }
 
-void    ft_in_zoom(int x, int y , t_fractol *fract)
+static void    ft_in_zoom(int x, int y , t_fractol *fract)
 {
-    //x = 0;
-    //y = 0;
+    x = 0;
+    y = 0;
     // x and y have to become the new center points. 
     //fract->x1 = (x / fract->zoom + fract->x1) - (x / (fract->zoom * 1.3));
 	//fract->y1 = (y / fract->zoom + fract->y1) - (y / (fract->zoom * 1.3));
@@ -55,7 +55,7 @@ void    ft_in_zoom(int x, int y , t_fractol *fract)
 	fract->it_max++;
 }
 
-void    ft_out_zoom(int x, int y , t_fractol *fract)
+static void    ft_out_zoom(int x, int y , t_fractol *fract)
 {
     x = 0;
     y = 0;

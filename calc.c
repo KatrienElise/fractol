@@ -6,19 +6,20 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/01 08:34:56 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/05 17:54:46 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void square(t_fractol *fract)
-{
+
+//void square(t_fractol *fract)
+//{
     /* fract->temp = (fract->a * fract->a) - (fract->b * fract->b);
      fract->b = 2.0 * fract->a * fract->b;
      fract->a = fract->temp;
      */
-    if (fract->name == 1)
+    /*if (fract->name == 1)
      {
           fract->tmp = fract->z_r;
           fract->z_r = fract->z_r * fract->z_r - \
@@ -26,16 +27,17 @@ void square(t_fractol *fract)
                (fract->c_r / fract->winw);
 	     fract->z_i = 2 * fract->z_i * fract->tmp + (fract->c_i / fract->winh);
      }
-     
-     else if (fract->name == 2)
+     */
+    /* else if (fract->name == 2)
      {
           fract->tmp = fract->z_r;
           fract->z_r = fract->z_r * fract->z_r - \
 		     fract->z_i * fract->z_i + fract->c_r;
 	     fract->z_i = 2 * fract->z_i * fract->tmp + fract->c_i;
      }
+     */
 
-     else if (fract->name == 3)
+     /*else if (fract->name == 3)
      {
          // fract->tmp = fract->z_r;
           fract->tmp = fract->z_r * fract->z_r - fract->z_i * fract->z_i + fract->c_r;
@@ -44,16 +46,15 @@ void square(t_fractol *fract)
 	     fract->z_i = fabs(2 * fract->z_i * fract->tmp) + fract->c_i;
 		fract->z_r = fract->tmp;
      }
+     */
+//}
 
-     
-}
-
-void  magnitude(t_fractol *fract)
+/*void  magnitude(t_fractol *fract)
 {
     fract->magni = fract->z_r * fract->z_r + 
      fract->z_i * fract->z_i;
 }
-
+*/
 void ft_calc_zero(t_fractol *fract)
 {
     // fract->name = 0;
@@ -81,6 +82,7 @@ void ft_calc_zero(t_fractol *fract)
 	fract->infi = 0;
      fract->magni = 0;
 }
+
 void calc_winw_winh(int ac, char **str, t_fractol *fract)
 {
      if (ac == 4)
