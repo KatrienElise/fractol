@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/05 17:25:53 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/06 14:11:19 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int     entry(char **av, int ac)
     if (!fract)
         error_no_struct(1);
     ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4);
-    //ft_calc_zero(fract);
     if (ft_fract_compare(av, ac, fract) == 0)
         error(fract, 1);
     ft_win_mlx_img(fract);
@@ -87,7 +86,6 @@ int     entry(char **av, int ac)
     mlx_hook(fract->win, 2, 1L << 0, event_key, fract);
 	mlx_hook(fract->win, 4, 1L << 2, event_mouse, fract);
 	mlx_hook(fract->win, 6, 1L << 13, event_mouse_move, fract);
-    // mlx_clear_window(fract->mlx, fract->win); nodig?
     mlx_loop(fract->mlx);
     return (0); 
 }

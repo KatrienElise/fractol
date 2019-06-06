@@ -1,14 +1,47 @@
  
 TAKE TROUGH:
--zoom maken
-(moet die kunnen zoomen op positie van muis?)
--langzaam bij zoom
--bus error met openen programma 
--static functions 
--basis formule voor burningship
--mouse julia hoe verandert hij 
+-basis formule voor burningship 
+-multithreading
+-where possible statics
+-bus error /segfault met openen programma 
+-extra fractols? sine
+-error files need of destroy window?
+-are there in the end of the set function and
+when draw fractol any values i want to reset to 0?
+-
+
+MULTITHREADING:
+-creer up to 12 different threads. gebaseerd op winh.
+-winh / 8.
+elke thread doet y aantal pixel in vert directie. 
+EXAMPLE: winh = 800, 8 threads met 10 y pixels per thread.
+
+Per thread worden dan 10 * WINW (800) dus 8000 pixels berekent.
+de eerste doet 0 t/m 10 de tweede 11 t/m 20 op de y-as.
+Elke thread zet afzonderlijk per pixel in het gehuegen de kleur. 
+Je maakt een kopie van de fract, naar bijv data, per pixel. met memcpy.
+zo berekent die het hele window veel sneller. 
 
 
+thread-join geeft alleen maar aan dat als alle 8 de threads klaar 
+zijn met berekenen het programma verder kan gaan. 
+
+BONUS:
+-change stable colors
+-change unstable colors
+-change julia with keys
+-moving with arrow
+-choose size window
+-shift between fractol while in fractol
+-change iterations/detail
+-show index text
+-reste function
+-zoom with klick
+-freeze in julia
+
+
+CONTEXT ERROR:
+-bus error starten programma
 -bus error 10
 In other words the memory tried to access by the program is 
 not a valid memory address.
@@ -19,16 +52,3 @@ outside the memory allocated for it or when writing memory which can only be rea
 
 The main difference between Segmentation Fault and Bus Error is that Segmentation Fault indicates an invalid 
 access to a valid memory, while Bus Error indicates an access to an invalid address.
-
-BONUS:
--change stable colors
--change unstable colors
--change julia with keys
--moving with arrow
-
--extra fractols? sine
--zoom in at mouse position?
--two fractals in two windos?
-
-NEXT:
--bus error starten programma

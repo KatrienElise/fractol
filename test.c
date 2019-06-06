@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/05/30 13:49:29 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/06 14:16:00 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,7 @@
 
 void	put_pixel_to_img(t_fractol *fract, int x, int y, int color)
 {
-	//while (x < WINW && y < WINH)
-   // {
       ft_memcpy(&fract->data_addr[(4 * y * fract->winw) + (4 * x)], &color, 4);
-      //  x++;
-      //  y++;
-  // }
-   // mlx_put_image_to_window(fract->mlx, fract->win, fract->img, 0, 0);
 }
 
 void  test_print_values(t_fractol *fract)

@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/05 17:55:46 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/06 13:09:29 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void    ft_mandelbrot_base(t_fractol *fract)
 {
 	if (!fract->it_max)
-    	fract->it_max = 30;
+    	fract->it_max = 40;
 	if (fract->zoom == 0)
 		fract->zoom = 1.3; // the bigger the number the bigger the fract
 	if (!fract->x1)
@@ -23,7 +23,7 @@ void    ft_mandelbrot_base(t_fractol *fract)
 	if (!fract->y1)
 		fract->y1 = 0; 
   fract->y = 0;
-	fract->infi = 3;
+	fract->infi = 6;
 	if (fract->color.nb != 0 || fract->color.stable != 0)
 	{
 		ft_get_color(fract);
@@ -49,18 +49,17 @@ static void    ft_calc_mandel(t_fractol *fract)
 		( 0.25 * fract->zoom * fract->winw) + fract->x1;
 	fract->c_i = (fract->y - fract->winh / 2) / 
 		( 0.25 * fract->zoom * fract->winh) + fract->y1;
-	fract->z_r = 0;
-	fract->z_i = 0;
+	fract->z_r = fract->c_r;
+	fract->z_i = fract->c_i;
 	fract->it = 0;
 	magnitude(fract);
-	while (fract->magni < fract->infi && fract->it < fract->it_max)
+	while (fabs(fract->z_r + fract->z_i) < fract->infi && fract->it < fract->it_max)
 	{
       fract->tmp = fract->z_r;
       fract->z_r = fract->z_r * fract->z_r - \
 		     fract->z_i * fract->z_i + fract->c_r;
 	    fract->z_i = 2 * fract->z_i * fract->tmp + fract->c_i;
 		fract->it++;
-		magnitude(fract);
 	}
 	if (fract->it == fract->it_max)
 		put_pixel_to_img(fract, fract->x, fract->y, fract->color.stable);
@@ -83,3 +82,5 @@ void    mandelbrot(t_fractol *fract)
 		fract->y++;
     }
 }
+
+//thread join asks to wait on the curernt thread untill this thread is finished

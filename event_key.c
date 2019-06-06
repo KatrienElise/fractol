@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/05 17:26:55 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/06 14:01:54 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int     event_key_change(int keycode, t_fractol *fract)
 {
-    ft_calc_zero(fract);
     if (keycode == KEY_J)
         fract->name = 1;
      else if (keycode == KEY_M)
@@ -64,13 +63,13 @@ static int    event_key2(int keycode, t_fractol *fract)
             fract->quit_mouse = 0;            
     }
     else if (keycode == KEY_RIGHT)
-        fract->x1 = fract->x1 - 0.03;
+        fract->x1 = fract->x1 - 0.08 / fract->zoom;
     else if (keycode == KEY_LEFT)
-        fract->x1 = fract->x1 + 0.03;
+        fract->x1 = fract->x1 + 0.08 / fract->zoom;
     else if (keycode == KEY_DOWN)
-        fract->y1 = fract->y1 - 0.03;
+        fract->y1 = fract->y1 - 0.08 / fract->zoom;
     else if (keycode == KEY_UP)
-        fract->y1 = fract->y1 + 0.03;
+        fract->y1 = fract->y1 + 0.08 / fract->zoom;
     else if (keycode == KEY_SPATIE)
         ft_calc_zero(fract);
     else if (keycode == KEY_I)

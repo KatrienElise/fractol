@@ -6,7 +6,7 @@
 /*   By: kblum <kblum@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:23:27 by rsteigen       #+#    #+#                */
-/*   Updated: 2019/06/05 18:08:06 by kblum         ########   odam.nl         */
+/*   Updated: 2019/06/06 14:10:52 by kblum         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void    ft_calc_julia(t_fractol *fract)
 	magnitude(fract);
 	while (fract->magni < fract->infi && fract->it < fract->it_max)
 	{
-		//square(fract);
 		fract->tmp = fract->z_r;
         fract->z_r = fract->z_r * fract->z_r - \
 			fract->z_i * fract->z_i - fract->change_jul + \
@@ -67,11 +66,11 @@ static void    ft_calc_julia(t_fractol *fract)
 		magnitude(fract);
 	}
 	if (fract->it == fract->it_max)
-		//put_pixel_to_img(fract, fract->x, fract->y, fract->color.stable);
-		ft_memcpy(&fract->data_addr[(4 * fract->y * fract->winw) + (4 * fract->x)], &fract->color.stable, 4);
+		ft_memcpy(&fract->data_addr[(4 * fract->y * fract->winw) + \
+			(4 * fract->x)], &fract->color.stable, 4);
 	else
-		//ft_memcpy(&fract->data_addr[(4 * fract->y * fract->winw) + (4 * fract->x)], &(fract->color.base * fract->it), 4);
-		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * (fract->it)));
+		put_pixel_to_img(fract, fract->x, fract->y, \
+			(fract->color.base * (fract->it)));
 }
 
 void    julia(t_fractol *fract)

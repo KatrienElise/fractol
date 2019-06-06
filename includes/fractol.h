@@ -21,6 +21,7 @@
 # include "color.h"
 # include "keycodes.h"
 # include <fcntl.h>
+# include <pthread.h>
 
 
 typedef struct      s_color
