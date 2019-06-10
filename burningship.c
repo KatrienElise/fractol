@@ -44,19 +44,22 @@ static void  magnitude(t_fractol *fract)
 
 static void    ft_calc_burningship(t_fractol *fract)
 {
+	double		tem;
+
 	fract->c_r = (fract->x - fract->winw / 2) / 
-		( 0.25 * fract->zoom * fract->winw) + fract->x1; // brengt 0,0 naar midden?
+		( 0.25 * fract->zoom * fract->winw) + fract->x1;
 	fract->c_i = (fract->y - fract->winh / 2) / 
 		( 0.25 * fract->zoom * fract->winh) + fract->y1;
-	fract->z_r = fract->c_r;
-	fract->z_i = fract->c_i;
+	fract->z_r = 0;
+	fract->z_i = 0;
 	fract->it = 0;
 	magnitude(fract);
 	while (fract->magni < fract->infi && fract->it < fract->it_max)
 	{
 
-    fract->z_r = (fract->z_r * fract->z_r - fract->z_i * fract->z_i) + fract->c_r;
-	  fract->z_i = fabs(2 * fract->z_i * fract->z_r) + fract->c_i;
+    tem = (fract->z_r * fract->z_r - fract->z_i * fract->z_i) + fract->c_r;
+	fract->z_i = fabs(2 * fract->z_r * fract->z_i) + fract->c_i;
+	fract->z_r = tem;
 		fract->it++;
 		magnitude(fract);
 	}

@@ -17,8 +17,8 @@ static int		mouse_julia(int x, int y, t_fractol *fract)
 	if (fract->name == 1 && fract->j_mouse == 1)
 	{
 		fract->c_r = x * 2;
-		fract->c_i = y * 2 - 800;
-		ft_fract_set(fract);
+		fract->c_i = y * 2 - 600;
+        speedy_julia(fract);
 	}
 	return (0);
 }

@@ -44,7 +44,7 @@ static void    ft_calc_julia(t_fractol *fract)
     fract->z_r = (fract->x - fract->winw / 2) / 
 		( 0.25 * fract->zoom * fract->winw) + fract->x1;
 	fract->z_i = (fract->y - fract->winh / 2) / 
-		( 0.25 * fract->zoom * fract->winh) + fract->y1;
+		( 0.25 * fract->zoom * fract->winh)/*  + fract->y1*/;
 	fract->it = 0;
 	magnitude(fract);
 	while (fract->magni < fract->infi && fract->it < fract->it_max)
