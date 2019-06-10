@@ -64,7 +64,6 @@ typedef struct      s_fractol
     
     int             y_max;
     int             y_cur;
-    //int             amount;
 
     double          magni;
     double	    	zoom;
@@ -126,7 +125,7 @@ void    sine(t_fractol *fract);
 //int     event_key2(int keycode, t_fractol *fract);
 int     event_key(int keycode, t_fractol *fract);
 //int     event_shifts(int keycode, t_fractol *fract);
-//int     event_key_change(int keycode, t_fractol *fract);
+//int     event_change_fract(int keycode, t_fractol *fract);
 
 /* ************************************************************************** */
 /*          event_mouse.c                                                       */
@@ -154,12 +153,6 @@ void    ft_mandelbrot_base(t_fractol *fract);
 void    speedy_mandel(t_fractol *fract);
 
 /* ************************************************************************** */
-/*          test.c                                                            */
-/* ************************************************************************** */
-void	put_pixel_to_img(t_fractol *fract, int x, int y, int color);
-void    test_print_values(t_fractol *fract);
-
-/* ************************************************************************** */
 /*          error.c                                                           */
 /* ************************************************************************** */
 void    exit_program(t_fractol *fract);
@@ -171,5 +164,6 @@ void    error(t_fractol *fract, int d);
 /* ************************************************************************** */
 void    ft_put_text(t_fractol *fract);
 void    ft_text_index(t_fractol *fract);
+void	put_pixel_to_img(t_fractol *fract, int x, int y, int color);
 
 #endif

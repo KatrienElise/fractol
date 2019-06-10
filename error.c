@@ -16,8 +16,6 @@
 void    exit_program(t_fractol *fract)
 {
     fract = NULL;
-    //mlx_destroy_window(fract->mlx, fract->win);
-      //  mlx_destroy_image(fract->mlx, fract->img);
 		exit(0);
 }
 
@@ -38,8 +36,6 @@ void    error(t_fractol *fract, int d)
         ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\", \"unknown\",");
         ft_putstr(" option: winwith winheight\n");
     }
-    //mlx_destroy_window(fract->mlx, fract->win);
-    //mlx_destroy_image(fract->mlx, fract->img);
 	exit(0);
 }
 

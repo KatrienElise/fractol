@@ -48,17 +48,17 @@ static void    ft_calc_burningship(t_fractol *fract)
 	magnitude(fract);
 	while (fract->magni < fract->infi && fract->it < fract->it_max)
 	{
-
-    tem = (fract->z_r * fract->z_r - fract->z_i * fract->z_i) + fract->c_r;
-	fract->z_i = fabs(2 * fract->z_r * fract->z_i) + fract->c_i;
-	fract->z_r = tem;
+    	tem = (fract->z_r * fract->z_r - fract->z_i * fract->z_i) + fract->c_r;
+		fract->z_i = fabs(2 * fract->z_r * fract->z_i) + fract->c_i;
+		fract->z_r = tem;
 		fract->it++;
 		magnitude(fract);
 	}
 	if (fract->it == fract->it_max)
 		put_pixel_to_img(fract, fract->x, fract->y, fract->color.stable);
 	else
-		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * fract->it));
+		put_pixel_to_img(fract, fract->x, fract->y, \
+			(fract->color.base * fract->it));
 }
 
 static void    *burningship(void *fract)

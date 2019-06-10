@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-static int     event_key_change(int keycode, t_fractol *fract)
+static int     event_change_fract(int keycode, t_fractol *fract)
 {
 	ft_calc_zero(fract);
     if (keycode == KEY_J)
@@ -56,14 +56,7 @@ static int   event_shifts(int keycode, t_fractol *fract)
 }
 static int    event_key2(int keycode, t_fractol *fract)
 {
-    if (keycode == KEY_Q && fract->name == 1)
-    {
-        if (fract->quit_mouse == 0)
-            fract->quit_mouse = 1;
-        else 
-            fract->quit_mouse = 0;            
-    }
-    else if (keycode == KEY_RIGHT)
+    if (keycode == KEY_RIGHT)
         fract->x1 = fract->x1 - 0.08 / fract->zoom;
     else if (keycode == KEY_LEFT)
         fract->x1 = fract->x1 + 0.08 / fract->zoom;
@@ -71,8 +64,6 @@ static int    event_key2(int keycode, t_fractol *fract)
         fract->y1 = fract->y1 - 0.08 / fract->zoom;
     else if (keycode == KEY_UP)
         fract->y1 = fract->y1 + 0.08 / fract->zoom;
-    else if (keycode == KEY_SPATIE)
-        ft_calc_zero(fract);
     else if (keycode == KEY_I)
         fract->it_max = fract->it_max + 15;
     else if (keycode == KEY_O)
@@ -92,13 +83,9 @@ static int    event_key2(int keycode, t_fractol *fract)
     return (0);
 }
 
-int    event_key(int keycode, t_fractol *fract)
+static void event_decider(int keycode, t_fractol *fract)
 {
-    int res;
-
-    if (keycode == KEY_ESC)
-        exit_program(fract);
-    else if (keycode == KEY_S)
+    if (keycode == KEY_S)
     {
         if (fract->shift == 0)
             fract->shift = 1;
@@ -119,13 +106,30 @@ int    event_key(int keycode, t_fractol *fract)
         else 
             fract->color.x = 0;            
     }
+}
+
+int         event_key(int keycode, t_fractol *fract)
+{
+    if (keycode == KEY_ESC)
+        exit_program(fract);
+    else if (keycode == KEY_Q && fract->name == 1)
+    {
+        if (fract->quit_mouse == 0)
+            fract->quit_mouse = 1;
+        else 
+            fract->quit_mouse = 0;            
+    }
+    else if (keycode == KEY_S || keycode == KEY_C || \
+        keycode == KEY_X || keycode == KEY_Q)
+        event_decider(keycode, fract);
     else if (keycode == KEY_PLUS || keycode == KEY_MIN)
         event_shifts(keycode, fract);
-    else if (keycode == KEY_J || keycode == KEY_M || keycode == KEY_B)
-        event_key_change(keycode, fract);
-    res = event_key2(keycode, fract);
-    if (res == 1)
-        fract->no_event = 1;
+    else if (keycode == KEY_J || keycode == KEY_M || \
+        keycode == KEY_B)
+        event_change_fract(keycode, fract);
+    else if (keycode == KEY_SPATIE)
+        ft_calc_zero(fract);
+    event_key2(keycode, fract);
     ft_fract_base(fract);
     return (0);
 }

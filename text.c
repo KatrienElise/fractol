@@ -50,3 +50,8 @@ void    ft_text_index(t_fractol *fract)
     mlx_string_put(fract->mlx, fract->win, 10, 185, \
         WHITE, "esc     = quit program");
 }
+
+void	put_pixel_to_img(t_fractol *fract, int x, int y, int color)
+{
+      ft_memcpy(&fract->data_addr[(4 * y * fract->winw) + (4 * x)], &color, 4);
+}

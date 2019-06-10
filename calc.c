@@ -44,7 +44,8 @@ void calc_winw_winh(int ac, char **str, t_fractol *fract)
 {
      if (ac == 4)
      {
-         if (ft_isdigit_string(str[2]) == 1 && ft_isdigit_string(str[3]) == 1)
+         if (ft_isdigit_string(str[2]) == 1 && \
+          ft_isdigit_string(str[3]) == 1)
          {
                fract->winw = ft_atoi(str[2]);
                fract->winh = ft_atoi(str[3]);

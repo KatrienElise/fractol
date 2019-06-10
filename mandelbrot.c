@@ -44,7 +44,8 @@ static void    ft_calc_mandel(t_fractol *fract)
 	fract->z_i = fract->c_i;
 	fract->it = 0;
 	magnitude(fract);
-	while (fabs(fract->z_r + fract->z_i) < fract->infi && fract->it < fract->it_max)
+	while (fabs(fract->z_r + fract->z_i) < fract->infi && \
+		fract->it < fract->it_max)
 	{
       fract->tmp = fract->z_r;
       fract->z_r = fract->z_r * fract->z_r - \
