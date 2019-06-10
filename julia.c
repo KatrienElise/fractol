@@ -20,12 +20,12 @@ void    ft_julia_base(t_fractol *fract)
 		fract->zoom = 1.3;
 	if (!fract->x1)
 		fract->x1 = 0;
-	if (fract->y1)
+	if (!fract->y1)
 		fract->y1 = 0;
     fract->y = 0;
     if (fract->j_mouse == 0)
     {
-        fract->c_r = 0.285; //0.285
+        fract->c_r = 0.285;
         fract->c_i = 0.08;
     }
 	fract->infi = 4;
@@ -44,7 +44,7 @@ static void    ft_calc_julia(t_fractol *fract)
     fract->z_r = (fract->x - fract->winw / 2) / 
 		( 0.25 * fract->zoom * fract->winw) + fract->x1;
 	fract->z_i = (fract->y - fract->winh / 2) / 
-		( 0.25 * fract->zoom * fract->winh)/*  + fract->y1*/;
+		( 0.25 * fract->zoom * fract->winh) + fract->y1;
 	fract->it = 0;
 	magnitude(fract);
 	while (fract->magni < fract->infi && fract->it < fract->it_max)
@@ -86,18 +86,16 @@ static void    *julia(void *fract)
 void	speedy_julia(t_fractol *fract)
 {
 	int			amount;
-
-	amount = fract->winh / THREAD_NUM;
-
-	pthread_t	multi[THREAD_NUM];
 	int 		i;
+	pthread_t	multi[THREAD_NUM];
 	t_fractol	copy[THREAD_NUM];
 
+	amount = fract->winh / THREAD_NUM;
 	i = 0;
 	while (i < THREAD_NUM)
 	{
 		ft_memcpy((void*)&copy[i], (void*)fract, sizeof(t_fractol));
-		copy[i].y_cur = amount * i;
+		copy[i].y = amount * i;
 		copy[i].y_max = amount * (i + 1);
 		pthread_create(&multi[i], NULL, julia, &copy[i]);
 		i++;

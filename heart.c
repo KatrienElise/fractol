@@ -36,8 +36,8 @@ void    ft_fract_set(t_fractol *fract)
     if (fract->put_index == 1)
        ft_text_index(fract);
     ft_put_text(fract);
-    //ft_reset_numbers(fract);
 }
+
 void    ft_fract_base(t_fractol *fract)
 {
     if (fract->name == 1)
@@ -79,7 +79,6 @@ int     entry(char **av, int ac)
     if (!fract)
         error_no_struct(1);
     ft_calc_zero(fract);
-   // ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4);
     if (ft_fract_compare(av, ac, fract) == 0)
         error(fract, 1);
     ft_win_mlx_img(fract);

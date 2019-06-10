@@ -15,7 +15,7 @@
 void    ft_burningship_base(t_fractol *fract)
 {
 	if(!fract->it_max)
-    	fract->it_max = 200;
+    	fract->it_max = 50;
 	if(!fract->zoom)
 		fract->zoom = 1.3;
 	if (!fract->x1)
@@ -24,16 +24,8 @@ void    ft_burningship_base(t_fractol *fract)
 		fract->y1 = -0.2; 
     fract->y = 0;
 	fract->infi = 4; 
-	if (fract->color.nb != 0 || fract->color.stable != 0)
-	{
-		ft_get_color(fract);
-		color_stable(fract);
-	}
-	else
-	{
-		fract->color.base = BLUE;
-		fract->color.stable = BLACK;
-	}	
+	ft_get_color(fract);
+	color_stable(fract);
 }
 
 static void  magnitude(t_fractol *fract)
@@ -90,13 +82,11 @@ static void    *burningship(void *fract)
 void	speedy_burningship(t_fractol *fract)
 {
 	int			amount;
-
-	amount = fract->winh / THREAD_NUM;
-
-	pthread_t	multi[THREAD_NUM];
 	int 		i;
+	pthread_t	multi[THREAD_NUM];
 	t_fractol	copy[THREAD_NUM];
 
+	amount = fract->winh / THREAD_NUM;
 	i = 0;
 	while (i < THREAD_NUM)
 	{

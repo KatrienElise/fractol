@@ -1,9 +1,7 @@
  
 TAKE TROUGH:
--basis formule voor burningship
 -bus error /segfault met openen programma 
 -extra fractols? sine
--inzoomen op locatie naar boven/beneden julia 
 
  
 BONUS:
@@ -21,9 +19,6 @@ BONUS:
 -use of threads to speed up
 
 GENERAL QUESTIONS:
--error files need of destroy window?
--maakt het uit via put_pixel of direct memcpy voor
-functionaliteit programma?
 -reden vinden voor seg/bus bij openen
 
 CONTEXT ERROR:

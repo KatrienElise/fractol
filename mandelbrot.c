@@ -80,13 +80,11 @@ static void    *mandelbrot(void *fract)
 void	speedy_mandel(t_fractol *fract)
 {
 	int			amount;
-
-	amount = fract->winh / THREAD_NUM;
-
-	pthread_t	multi[THREAD_NUM];
 	int 		i;
+	pthread_t	multi[THREAD_NUM];
 	t_fractol	copy[THREAD_NUM];
 
+	amount = fract->winh / THREAD_NUM;
 	i = 0;
 	while (i < THREAD_NUM)
 	{

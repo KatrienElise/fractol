@@ -13,12 +13,12 @@
 #ifndef COLOR_H
 # define COLOR_H
 
-# define RED 005000001
-# define RED2 002000001
-# define BLUE 000000007
-# define GREEN 2050
-# define YELLOW 002004001
-# define PINK 200001001
+# define RED        005000001
+# define RED2       002000001
+# define BLUE       000000007
+# define GREEN      2050
+# define YELLOW     002004001
+# define PINK       200001001
 # define PINK2 002001005
 # define PURPLE 001000007
 # define LIGHT_BLUE 0x18E4E1
