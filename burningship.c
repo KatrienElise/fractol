@@ -66,19 +66,46 @@ static void    ft_calc_burningship(t_fractol *fract)
 		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * fract->it));
 }
 
-void    burningship(t_fractol *fract)
+static void    *burningship(void *fract)
 {
-	//add a threading, maakt die heel veel threads for elk pixel? dat hij al die berkeningen tegelijk doet? 
-	fract->x = 0;
-	fract->tmp = fract->x;
-	while (fract->y < fract->winh)
+	t_fractol	*fract2;
+
+	fract2 = (t_fractol*)fract;
+	while (fract2->y < fract2->y_max)
 	{
-		fract->x = fract->tmp;
-		while (fract->x < fract->winw)
+		fract2->x = 0;
+		while (fract2->x < fract2->winw)
 		{
-			ft_calc_burningship(fract);
-			fract->x++;
+			ft_calc_burningship(fract2);
+			fract2->x++;
 		}
-		fract->y++;
+		fract2->y++;
     }
+	return (fract);
+}
+
+void	speedy_burningship(t_fractol *fract)
+{
+	int			amount;
+
+	amount = fract->winh / THREAD_NUM;
+
+	pthread_t	multi[THREAD_NUM];
+	int 		i;
+	t_fractol	copy[THREAD_NUM];
+
+	i = 0;
+	while (i < THREAD_NUM)
+	{
+		ft_memcpy((void*)&copy[i], (void*)fract, sizeof(t_fractol));
+		copy[i].y = amount * i;
+		copy[i].y_max = amount * (i + 1);
+		pthread_create(&multi[i], NULL, burningship, &copy[i]);
+		i++;
+	}
+	while(i >= 0)
+	{
+		pthread_join(multi[i], NULL);
+		i--;
+	}
 }

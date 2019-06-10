@@ -14,6 +14,7 @@
 
 static int     event_key_change(int keycode, t_fractol *fract)
 {
+	ft_calc_zero(fract);
     if (keycode == KEY_J)
         fract->name = 1;
      else if (keycode == KEY_M)

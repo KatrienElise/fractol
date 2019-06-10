@@ -23,6 +23,7 @@
 # include <fcntl.h>
 # include <pthread.h>
 
+# define THREAD_NUM 10
 
 typedef struct      s_color
 {
@@ -60,6 +61,10 @@ typedef struct      s_fractol
     int             move_vert;
     int             put_index;
     int             no_event;
+    
+    int             y_max;
+    int             y_cur;
+    //int             amount;
 
     double          magni;
     double	    	zoom;
@@ -106,7 +111,7 @@ void     calc_winw_winh(int ac, char **av, t_fractol *fract);
 /* ************************************************************************** */
 void    ft_burningship_base(t_fractol *fract);
 //void    ft_calc_burningship(t_fractol *fract);
-void    burningship(t_fractol *fract);
+void    speedy_burningship(t_fractol *fract);
 
 /* ************************************************************************** */
 /*          sine.c                                                            */
@@ -136,16 +141,17 @@ int     event_mouse_move(int x, int y, t_fractol *fract);
 /* ************************************************************************** */
 /*          julia.c                                                          */
 /* ************************************************************************** */
-void    ft_julia_base(t_fractol *fract);
+void           ft_julia_base(t_fractol *fract);
 //void    ft_calc_julia(t_fractol *fract);
-void    julia(t_fractol *fract);
-
+//static void    julia(void *fract);
+void           speedy_julia(t_fractol *fract);
 /* ************************************************************************** */
 /*          mandelbrot.c                                                      */
 /* ************************************************************************** */
 void    ft_mandelbrot_base(t_fractol *fract);
 //void    ft_calc_mandel(t_fractol *fract);
-void    mandelbrot(t_fractol *fract);
+//void    mandelbrot(t_fractol *fract);
+void    speedy_mandel(t_fractol *fract);
 
 /* ************************************************************************** */
 /*          test.c                                                            */

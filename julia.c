@@ -29,16 +29,8 @@ void    ft_julia_base(t_fractol *fract)
         fract->c_i = 0.08;
     }
 	fract->infi = 4;
-	if (fract->color.nb != 0 || fract->color.stable != 0)
-	{
-		ft_get_color(fract);
-		color_stable(fract);
-	}
-	else
-	{
-		fract->color.base = BLUE;
-		fract->color.stable = BLACK;
-	}
+	ft_get_color(fract);
+	color_stable(fract);
 }
 
 static void  magnitude(t_fractol *fract)
@@ -52,7 +44,7 @@ static void    ft_calc_julia(t_fractol *fract)
     fract->z_r = (fract->x - fract->winw / 2) / 
 		( 0.25 * fract->zoom * fract->winw) + fract->x1;
 	fract->z_i = (fract->y - fract->winh / 2) / 
-		( 0.35 * fract->zoom * fract->winh) + fract->y1;
+		( 0.25 * fract->zoom * fract->winh) + fract->y1;
 	fract->it = 0;
 	magnitude(fract);
 	while (fract->magni < fract->infi && fract->it < fract->it_max)
@@ -73,18 +65,46 @@ static void    ft_calc_julia(t_fractol *fract)
 			(fract->color.base * (fract->it)));
 }
 
-void    julia(t_fractol *fract)
+static void    *julia(void *fract)
 {
-    fract->x = 0;
-	
-	while (fract->y < fract->winh)
+	t_fractol	*fract2;
+
+	fract2 = (t_fractol*)fract;
+	while (fract2->y < fract2->y_max)
 	{
-		fract->x = 0;
-		while (fract->x < fract->winw)
+		fract2->x = 0;
+		while (fract2->x < fract2->winw)
 		{
-			ft_calc_julia(fract);
-			fract->x++;
+			ft_calc_julia(fract2);
+			fract2->x++;
 		}
-		fract->y++;
+		fract2->y++;
     }
+	return (fract);
+}
+
+void	speedy_julia(t_fractol *fract)
+{
+	int			amount;
+
+	amount = fract->winh / THREAD_NUM;
+
+	pthread_t	multi[THREAD_NUM];
+	int 		i;
+	t_fractol	copy[THREAD_NUM];
+
+	i = 0;
+	while (i < THREAD_NUM)
+	{
+		ft_memcpy((void*)&copy[i], (void*)fract, sizeof(t_fractol));
+		copy[i].y_cur = amount * i;
+		copy[i].y_max = amount * (i + 1);
+		pthread_create(&multi[i], NULL, julia, &copy[i]);
+		i++;
+	}
+	while(i >= 0)
+	{
+		pthread_join(multi[i], NULL);
+		i--;
+	}
 }

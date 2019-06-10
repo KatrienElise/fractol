@@ -25,11 +25,11 @@ static void    ft_win_mlx_img(t_fractol *fract)
 void    ft_fract_set(t_fractol *fract)
 {
     if (fract->name == 1)
-        julia(fract);
+        speedy_julia(fract);
     else if (fract->name == 2)
-        mandelbrot(fract);
+        speedy_mandel(fract);
     else if (fract->name == 3)
-        burningship(fract);
+        speedy_burningship(fract);
     else
         sine(fract);
     mlx_put_image_to_window(fract->mlx, fract->win, fract->img, 0, 0);
@@ -78,7 +78,8 @@ int     entry(char **av, int ac)
     fract = (t_fractol *) malloc(sizeof(t_fractol));
     if (!fract)
         error_no_struct(1);
-    ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4);
+    ft_calc_zero(fract);
+   // ft_bzero(fract->data_addr, (fract->winw * fract->winh) * 4);
     if (ft_fract_compare(av, ac, fract) == 0)
         error(fract, 1);
     ft_win_mlx_img(fract);

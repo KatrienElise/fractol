@@ -17,23 +17,15 @@ void    ft_mandelbrot_base(t_fractol *fract)
 	if (!fract->it_max)
     	fract->it_max = 40;
 	if (fract->zoom == 0)
-		fract->zoom = 1.3; // the bigger the number the bigger the fract
+		fract->zoom = 1.3;
 	if (!fract->x1)
 		fract->x1 = -0.7;
 	if (!fract->y1)
 		fract->y1 = 0; 
-  fract->y = 0;
+  	fract->y = 0;
 	fract->infi = 6;
-	if (fract->color.nb != 0 || fract->color.stable != 0)
-	{
-		ft_get_color(fract);
-		color_stable(fract);
-	}
-	else
-	{
-		fract->color.base = BLUE;
-		fract->color.stable = BLACK;
-	}	
+	ft_get_color(fract);
+	color_stable(fract);	
 }
 
 static void  magnitude(t_fractol *fract)
@@ -44,7 +36,6 @@ static void  magnitude(t_fractol *fract)
 
 static void    ft_calc_mandel(t_fractol *fract)
 {
-
   	fract->c_r = (fract->x - fract->winw / 2) / 
 		( 0.25 * fract->zoom * fract->winw) + fract->x1;
 	fract->c_i = (fract->y - fract->winh / 2) / 
@@ -68,19 +59,46 @@ static void    ft_calc_mandel(t_fractol *fract)
 			(fract->color.base * (fract->it)));
 }
 
-void    mandelbrot(t_fractol *fract)
+static void    *mandelbrot(void *fract)
 {
-	fract->x = 0;
-	while (fract->y < fract->winh)
+	t_fractol	*fract2;
+
+	fract2 = (t_fractol*)fract;
+	while (fract2->y < fract2->y_max)
 	{
-		fract->x = 0;
-		while (fract->x < fract->winw)
+		fract2->x = 0;
+		while (fract2->x < fract2->winw)
 		{
-			ft_calc_mandel(fract);
-			fract->x++;
+			ft_calc_mandel(fract2);
+			fract2->x++;			
 		}
-		fract->y++;
+		fract2->y++;
     }
+	return (fract);
 }
 
-//thread join asks to wait on the curernt thread untill this thread is finished
+void	speedy_mandel(t_fractol *fract)
+{
+	int			amount;
+
+	amount = fract->winh / THREAD_NUM;
+
+	pthread_t	multi[THREAD_NUM];
+	int 		i;
+	t_fractol	copy[THREAD_NUM];
+
+	i = 0;
+	while (i < THREAD_NUM)
+	{
+		ft_memcpy((void*)&copy[i], (void*)fract, sizeof(t_fractol));
+		copy[i].y = amount * i;
+		copy[i].y_max = amount * (i + 1);
+		pthread_create(&multi[i], NULL, mandelbrot, &copy[i]);
+		i++;
+	}
+	while(i >= 0)
+	{
+		pthread_join(multi[i], NULL);
+		i--;
+	}
+}
