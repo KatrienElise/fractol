@@ -20,8 +20,6 @@ void ft_calc_zero(t_fractol *fract)
      fract->color.nb = 0;
      fract->color.nb2 = 0;
      fract->quit_mouse = 0;
-     fract->move_hor = 0;
-     fract->move_vert = 0;
      fract->put_index = 0;
      fract->shift = 0;
      fract->color.c = 0;

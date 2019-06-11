@@ -40,15 +40,15 @@ void    ft_text_index(t_fractol *fract)
     mlx_string_put(fract->mlx, fract->win, 10, 85, \
         WHITE, "c        = change color unstable");
     mlx_string_put(fract->mlx, fract->win, 10, 105, \
-        WHITE, "x       = change color stable");
+        WHITE, "x        = change color stable");
     mlx_string_put(fract->mlx, fract->win, 10, 125, \
-        WHITE, "+, -    = changer s, c, x");
+        WHITE, "+, -     = changer s, c, x");
     mlx_string_put(fract->mlx, fract->win, 10, 145, \
-        WHITE, "spatie  = reset");
+        WHITE, "spatie   = reset");
     mlx_string_put(fract->mlx, fract->win, 10, 165, \
-        WHITE, "o, i    = change iteratioins");
+        WHITE, "o, i     = change iteratioins");
     mlx_string_put(fract->mlx, fract->win, 10, 185, \
-        WHITE, "esc     = quit program");
+        WHITE, "esc      = quit program");
 }
 
 void	put_pixel_to_img(t_fractol *fract, int x, int y, int color)

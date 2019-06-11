@@ -29,6 +29,8 @@ void    ft_sine_base(t_fractol *fract)
 
 void    ft_calc_sine(t_fractol *fract)
 {
+	double tem;
+
 	fract->c_r = ((fract->z_r / fract->winw) * 5 - 2.5) / fract->zoom + fract->x1;
 	fract->c_i = ((fract->z_i / fract->winh) * 5 - 2.5) / fract->zoom + fract->y1;
 	//iteration = 0;
@@ -36,21 +38,22 @@ void    ft_calc_sine(t_fractol *fract)
 	fract->z_i = 0;
 	while (fract->z_r * fract->z_r + fract->z_i * fract->z_i < 31.415926536 && (fract->it < fract->it_max))
 	{
+		tem = fract->z_r;
+
 		fract->z_r = sin(fract->z_r) * cosh(fract->z_i) + fract->c_r;
-		fract->z_i = cos(fract->z_r) * sinh(fract->z_i) + fract->c_i;
+		fract->z_i = cos(tem) * sinh(fract->z_i) + fract->c_i;
 		fract->x = fract->z_r;
 		fract->y = fract->z_i;
 		fract->it++;
 	}
 	if (fract->it == fract->it_max)
-		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, fract->color.stable);
+		put_pixel_to_img(fract, fract->x, fract->y, fract->color.stable);
 	else
-		put_pixel_to_img(fract, fract->x + fract->move_hor, fract->y + fract->move_vert, (fract->color.base * (fract->it)));
+		put_pixel_to_img(fract, fract->x, fract->y, (fract->color.base * (fract->it)));
 }
 
 void    sine(t_fractol *fract)
 {
-	fract->x = 0;
 	while (fract->y < fract->winh)
 	{
 		fract->x = 0;

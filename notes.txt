@@ -1,9 +1,13 @@
  
 TAKE TROUGH:
--bus error /segfault met openen programma 
 -extra fractols? sine
 
- 
+ CHANGES:
+ taking away no event in event_key.
+  //res = event_key2(keycode, fract);
+   // if (res == 1)
+     //   fract->no_event = 1;
+
 BONUS:
 -change stable colors
 -change unstable colors
@@ -18,8 +22,6 @@ BONUS:
 -freeze in julia
 -use of threads to speed up
 
-GENERAL QUESTIONS:
--reden vinden voor seg/bus bij openen
 
 CONTEXT ERROR:
 -bus error starten programma

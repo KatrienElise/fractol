@@ -57,8 +57,6 @@ typedef struct      s_fractol
     int             j_mouse;
     int             quit_mouse;
     int             shift;
-    int             move_hor;
-    int             move_vert;
     int             put_index;
     int             no_event;
     
