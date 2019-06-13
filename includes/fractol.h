@@ -111,13 +111,6 @@ void    ft_burningship_base(t_fractol *fract);
 void    speedy_burningship(t_fractol *fract);
 
 /* ************************************************************************** */
-/*          sine.c                                                            */
-/* ************************************************************************** */
-void    ft_sine_base(t_fractol *fract);
-void    ft_calc_sine(t_fractol *fract);
-void    sine(t_fractol *fract);
-
-/* ************************************************************************** */
 /*          event_key.c                                                       */
 /* ************************************************************************** */
 //int     event_key2(int keycode, t_fractol *fract);

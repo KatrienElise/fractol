@@ -18,7 +18,7 @@ int     main(int ac, char **av)
       entry(av, ac);
     else
       ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\"");
-      ft_putstr(" \"burningship\", \"sine\"\n");
+      ft_putstr(" \"burningship\n");
       ft_putstr("option: winwith winheight\n");
     return (0); 
 }

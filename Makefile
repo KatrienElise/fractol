@@ -14,7 +14,7 @@
 NAME = fractol
 FLAGS = -Wall -Wextra -Werror
 FUNCS =	heart.c event_key.c event_mouse.c julia.c mandelbrot.c error.c text.c \
-calc.c burningship.c color.c sine.c
+calc.c burningship.c color.c
 
 all: $(NAME)
 

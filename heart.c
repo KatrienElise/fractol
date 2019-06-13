@@ -28,10 +28,8 @@ void    ft_fract_set(t_fractol *fract)
         speedy_julia(fract);
     else if (fract->name == 2)
         speedy_mandel(fract);
-    else if (fract->name == 3)
-        speedy_burningship(fract);
     else
-        sine(fract);
+        speedy_burningship(fract);
     mlx_put_image_to_window(fract->mlx, fract->win, fract->img, 0, 0);
     if (fract->put_index == 1)
        ft_text_index(fract);
@@ -44,10 +42,8 @@ void    ft_fract_base(t_fractol *fract)
         ft_julia_base(fract);
     else if (fract->name == 2)
         ft_mandelbrot_base(fract);
-    else if (fract->name == 3)
-        ft_burningship_base(fract);
     else
-        ft_sine_base(fract);
+        ft_burningship_base(fract);
     ft_fract_set(fract); 
 }
 
@@ -59,12 +55,10 @@ int    ft_fract_compare(char **str, int ac, t_fractol *fract)
         fract->name = 2; 
     else if (ft_strcmp(str[1], "burningship") == 0)
         fract->name = 3;
-    else if (ft_strcmp(str[1], "sine") == 0)
-        fract->name = 4;
     else
     {
         ft_putstr("Usage: /fractol \"mandelbrot\", \"julia\"");
-        ft_putstr(" \"burningship\", \"sine\"\n");
+        ft_putstr(" \"burningship\n");
         return (0);
     }
     calc_winw_winh(ac, str, fract);

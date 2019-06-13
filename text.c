@@ -21,12 +21,9 @@ void    ft_put_text(t_fractol *fract)
     else if (fract->name == 2)
         mlx_string_put(fract->mlx, fract->win, (fract->winw / 3), 10, \
             WHITE, "mandelbrot");
-    else if (fract->name == 3)
+    else
         mlx_string_put(fract->mlx, fract->win, (fract->winw / 3), 10, \
             WHITE, "burningship");
-    else 
-        mlx_string_put(fract->mlx, fract->win, (fract->winw / 3), 10, \
-            WHITE, "sine");
 }
 
 void    ft_text_index(t_fractol *fract)
