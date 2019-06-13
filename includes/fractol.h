@@ -15,7 +15,6 @@
 # include <unistd.h>
 # include "mlx.h"
 # include <stdlib.h>
-# include <stdio.h>
 # include <math.h>
 # include "../libft/libft.h"
 # include "color.h"
